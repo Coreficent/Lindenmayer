@@ -14,6 +14,7 @@
         // Start is called before the first frame update
         void Start()
         {
+            Debug.Log("Lindenmayer System Started");
             variables = "";
             constants = "";
             axiom = "F";
