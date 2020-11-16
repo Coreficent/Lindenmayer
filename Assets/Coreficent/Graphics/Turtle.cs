@@ -9,8 +9,10 @@
 
         public Material Material;
         public string Sentence = "F[+F]F[-F]F";
+        public float MaxWidth = 0.0f;
+        public float MaxHeight = 0.0f;
 
-        private float Angle = 0.0f;
+        private float Angle = 90.0f;
         private Vector2 Position = new Vector2();
         private int index = 0;
         private Stack<Tuple<Vector2, float>> stack = new Stack<Tuple<Vector2, float>>();
@@ -75,6 +77,10 @@
             Debug.Log("line end " + Position);
             _line.SetPosition(1, Position);
             _line = null;
+
+            MaxWidth = Mathf.Max(MaxWidth, Mathf.Abs(Position.x));
+            MaxHeight = Mathf.Max(MaxHeight, Mathf.Abs(Position.y));
+
             lineCount++;
         }
         void CreateLine()

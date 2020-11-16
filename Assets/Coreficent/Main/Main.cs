@@ -8,6 +8,7 @@
 
     public class Main : MonoBehaviour
     {
+        public GameObject MainCamera;
         public Material Material;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
@@ -15,6 +16,7 @@
         protected void Start()
         {
             Debug.Log("Main Started");
+
             _turtle.Material = Material;
             _turtle.Sentence = _lindenmayerSystem.Expand(3);
         }
@@ -24,6 +26,7 @@
             if (_turtle.HasNext())
             {
                 _turtle.Next();
+                Debug.Log("aspect" + MainCamera.GetComponent<Camera>().aspect);
             }
             else
             {
