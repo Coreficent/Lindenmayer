@@ -1,10 +1,7 @@
 ﻿namespace Coreficent.Grammar
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Text;
     using UnityEngine;
-
     public class LindenmayerSystem
     {
         private string variables;

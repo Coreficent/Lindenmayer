@@ -1,16 +1,15 @@
 ﻿namespace Coreficent.Graphics
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
     public class Turtle
     {
-
         public Material Material;
         public string Sentence = "F[+F]F[-F]F";
         public float MaxWidth = 0.0f;
         public float MaxHeight = 0.0f;
+        public int Iteration = 0;
 
         private float Angle = 90.0f;
         private Vector2 Position = new Vector2();
@@ -26,12 +25,14 @@
         }
         public void Next()
         {
+            bool drawn = false;
             if (HasNext())
             {
                 switch (Sentence[index])
                 {
                     case 'F':
                         MoveForward();
+                        drawn = true;
                         break;
                     case '[':
                         stack.Push(new Tuple<Vector2, float>(Position, Angle));
@@ -57,6 +58,17 @@
             else
             {
                 Debug.Log("Drawing Complete");
+            }
+            if (drawn)
+            {
+                return;
+            }
+            else
+            {
+                if (HasNext())
+                {
+                    Next();
+                }
             }
         }
         public void MoveForward()
@@ -88,8 +100,8 @@
             _line = new GameObject("Line" + lineCount).AddComponent<LineRenderer>();
             _line.material = Material;
             _line.positionCount = 2;
-            _line.startWidth = 0.15f;
-            _line.endWidth = 0.15f;
+            _line.startWidth = Iteration * 0.25f;
+            _line.endWidth = Iteration * 0.25f;
             _line.useWorldSpace = false;
             _line.numCapVertices = 50;
         }

@@ -135,12 +135,6 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: 8cecc5889dd26b949f7e7ef53ab09b30
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Coreficent.Main
-    className: LinearCurve
-  - hash:
-      serializedVersion: 2
       Hash: 234d407605354852c48e57df17c9a1c6
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
