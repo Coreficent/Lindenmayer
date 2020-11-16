@@ -14,7 +14,7 @@
             {
                 if (_line == null)
                 {
-                    createLine();
+                    CreateLine();
                 }
 
                 _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -38,7 +38,7 @@
             }
         }
 
-        void createLine()
+        void CreateLine()
         {
             _line = new GameObject("Line" + lineCount).AddComponent<LineRenderer>();
             _line.material = Material;
