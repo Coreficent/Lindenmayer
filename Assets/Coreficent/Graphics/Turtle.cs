@@ -100,8 +100,8 @@
             _line = new GameObject("Line" + lineCount).AddComponent<LineRenderer>();
             _line.material = Material;
             _line.positionCount = 2;
-            _line.startWidth = Iteration * 0.25f;
-            _line.endWidth = Iteration * 0.25f;
+            _line.startWidth = Iteration * 0.1f;
+            _line.endWidth = Iteration * 0.1f;
             _line.useWorldSpace = false;
             _line.numCapVertices = 50;
         }

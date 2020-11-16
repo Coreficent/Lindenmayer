@@ -29,7 +29,7 @@
                     _turtle.Next();
                     if (_turtle.MaxHeight > MainCamera.GetComponent<Camera>().orthographicSize)
                     {
-                        MainCamera.GetComponent<Camera>().orthographicSize = _turtle.MaxHeight * 0.75f;
+                        MainCamera.GetComponent<Camera>().orthographicSize = _turtle.MaxHeight * 0.5f;
                         MainCamera.GetComponent<Camera>().transform.position = new Vector3(0.0f, _turtle.MaxHeight / 2.0f, -10);
                     }
                 }

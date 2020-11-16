@@ -19,28 +19,33 @@
         }
         public string Expand(int iteration)
         {
-            StringBuilder result = new StringBuilder();
-            string intermediate = axiom;
+            string itermediate = axiom;
             for (var i = 0; i < iteration; ++i)
             {
-                foreach (char c in intermediate)
+                itermediate = Expand(itermediate);
+            }
+            return itermediate;
+        }
+
+        public string Expand(string sentence)
+        {
+            string result = "";
+
+            foreach (char c in sentence)
+            {
+                string output = "";
+                if (c == 'F')
                 {
-                    string output = "";
-                    if (c == 'F')
-                    {
-                        output += "F[+F]F[-F]F";
-                    }
-                    else
-                    {
-                        output += c;
-                    }
-                    result.Append(output);
+                    output += "F[+F]F[-F]F";
                 }
-                intermediate = result.ToString();
+                else
+                {
+                    output += c;
+                }
+                result += output;
             }
 
-            Debug.Log(result.ToString());
-            return result.ToString();
+            return result;
         }
     }
 }
