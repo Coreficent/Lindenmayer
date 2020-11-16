@@ -5,14 +5,13 @@
     using System.Text;
     using UnityEngine;
 
-    public class LindenmayerSystem : MonoBehaviour
+    public class LindenmayerSystem
     {
         private string variables;
         private string constants;
         private string axiom;
         private string rules;
-        // Start is called before the first frame update
-        void Start()
+        public LindenmayerSystem()
         {
             Debug.Log("Lindenmayer System Started");
             variables = "";
@@ -21,22 +20,16 @@
             rules = "F->F[+F]F[-F]F";
             Expand(1);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        private void Expand(int iteration)
+        public string Expand(int iteration)
         {
             StringBuilder result = new StringBuilder();
+            string intermediate = axiom;
             for (var i = 0; i < iteration; ++i)
             {
-                foreach (char c in axiom)
+                foreach (char c in intermediate)
                 {
                     string output = "";
-                    if(c == 'F')
+                    if (c == 'F')
                     {
                         output += "F[+F]F[-F]F";
                     }
@@ -46,8 +39,11 @@
                     }
                     result.Append(output);
                 }
+                intermediate = result.ToString();
             }
+
             Debug.Log(result.ToString());
+            return result.ToString();
         }
     }
 }

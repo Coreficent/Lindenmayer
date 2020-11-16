@@ -4,32 +4,29 @@
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
-
-    public class Turtle : MonoBehaviour
+    public class Turtle
     {
-        public float Angle = 0.0f;
-        public Vector2 Position = new Vector2();
-        // Start is called before the first frame update
-        private int index = 0;
-        private string sentence = "F[+F]F[-F]F";
-        private Stack<Tuple<Vector2, float>> stack = new Stack<Tuple<Vector2, float>>();
-        private float moveDistance = 5.0f;
 
         public Material Material;
+        public string Sentence = "F[+F]F[-F]F";
+
+        private float Angle = 0.0f;
+        private Vector2 Position = new Vector2();
+        private int index = 0;
+        private Stack<Tuple<Vector2, float>> stack = new Stack<Tuple<Vector2, float>>();
+        private float moveDistance = 1.0f;
         private LineRenderer _line;
         private int lineCount = 0;
 
-        void Start()
+        public bool HasNext()
         {
-            Debug.Log("Turtle Started");
+            return index < Sentence.Length;
         }
-
-        // Update is called once per frame
-        void Update()
+        public void Next()
         {
-            if (index < sentence.Length)
+            if (HasNext())
             {
-                switch (sentence[index])
+                switch (Sentence[index])
                 {
                     case 'F':
                         MoveForward();
@@ -58,17 +55,15 @@
             else
             {
                 Debug.Log("Drawing Complete");
-                enabled = false;
             }
         }
-
         public void MoveForward()
         {
             Debug.Log("draw" + lineCount);
             var radian = Angle * Mathf.Deg2Rad;
             // reversed for so that it grows from the bottom to top.
-            var y = Mathf.Cos(radian);
-            var x = Mathf.Sin(radian);
+            var x = Mathf.Cos(radian);
+            var y = Mathf.Sin(radian);
             var pos = new Vector2(x * moveDistance, y * moveDistance);
 
             CreateLine();
@@ -81,9 +76,7 @@
             _line.SetPosition(1, Position);
             _line = null;
             lineCount++;
-
         }
-
         void CreateLine()
         {
             _line = new GameObject("Line" + lineCount).AddComponent<LineRenderer>();
