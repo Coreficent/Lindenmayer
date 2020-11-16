@@ -26,6 +26,11 @@
             if (_turtle.HasNext())
             {
                 _turtle.Next();
+                if (_turtle.MaxHeight > MainCamera.GetComponent<Camera>().orthographicSize)
+                {
+                    MainCamera.GetComponent<Camera>().orthographicSize = _turtle.MaxHeight;
+                    MainCamera.GetComponent<Camera>().transform.position = new Vector3(0.0f, _turtle.MaxHeight / 2.0f, -10);
+                }
                 Debug.Log("aspect" + MainCamera.GetComponent<Camera>().aspect);
             }
             else
