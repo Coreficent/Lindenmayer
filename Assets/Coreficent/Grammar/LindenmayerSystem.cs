@@ -33,16 +33,7 @@
 
             foreach (char c in sentence)
             {
-                string output = "";
-                if (c == 'F')
-                {
-                    output += "F[+F]F[-F]F";
-                }
-                else
-                {
-                    output += c;
-                }
-                result += output;
+                result += c == 'F' ? "F[+F]F[-F]F" : c.ToString();
             }
 
             return result;

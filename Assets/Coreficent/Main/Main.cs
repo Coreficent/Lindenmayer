@@ -43,6 +43,8 @@
 
             _turtle.Material = Material;
 
+            Reset();
+
             Root = this;
         }
 

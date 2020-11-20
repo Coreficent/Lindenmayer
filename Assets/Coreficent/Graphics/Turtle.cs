@@ -15,7 +15,7 @@
         private Vector2 Position = new Vector2();
         private int index = 0;
         private Stack<Tuple<Vector2, float>> stack = new Stack<Tuple<Vector2, float>>();
-        private float moveDistance = 1.0f;
+        private readonly float moveDistance = 1.0f;
 
         private List<LineRenderer> lines = new List<LineRenderer>();
         private int lineCount = 0;
