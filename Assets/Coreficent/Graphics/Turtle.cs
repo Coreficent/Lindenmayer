@@ -51,8 +51,8 @@
                     default:
                         break;
                 }
-                Debug.Log("location: " + Position);
-                Debug.Log("angle: " + Angle);
+                //Debug.Log("location: " + Position);
+                //Debug.Log("angle: " + Angle);
                 ++index;
             }
             else
@@ -73,7 +73,7 @@
         }
         public void MoveForward()
         {
-            Debug.Log("draw" + lineCount);
+            //Debug.Log("draw" + lineCount);
             var radian = Angle * Mathf.Deg2Rad;
             // reversed for so that it grows from the bottom to top.
             var x = Mathf.Cos(radian);
@@ -81,12 +81,12 @@
             var pos = new Vector2(x * moveDistance, y * moveDistance);
 
             CreateLine();
-            Debug.Log("line start " + Position);
+            //Debug.Log("line start " + Position);
             _line.SetPosition(0, Position);
 
             Position += pos;
 
-            Debug.Log("line end " + Position);
+            //Debug.Log("line end " + Position);
             _line.SetPosition(1, Position);
             _line = null;
 

@@ -3,10 +3,13 @@
     using Coreficent.Grammar;
     using Coreficent.Graphics;
     using UnityEngine;
+    using UnityEngine.UI;
+
     public class Main : MonoBehaviour
     {
         public GameObject MainCamera;
         public Material Material;
+        public InputField InputField;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -22,6 +25,7 @@
 
         private void Update()
         {
+            Debug.Log("Main Input" + InputField.text.ToString());
             for (var i = 0; i < _iteration; ++i)
             {
                 if (_turtle.HasNext())
