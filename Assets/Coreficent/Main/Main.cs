@@ -7,39 +7,59 @@
 
     public class Main : MonoBehaviour
     {
+        static public Main Root = null;
+
+        static private int _iteration = 1;
+
+
         public GameObject MainCamera;
         public Material Material;
         public InputField InputField;
+        public Button ButtonRestart;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
-        private int _iteration = 5;
+
+
+        public void Reset()
+        {
+            _turtle.Reset();
+
+            //TODO error handling
+            _iteration = InputField.text == "" ? 1 : int.Parse(InputField.text);
+            _turtle.Sentence = _lindenmayerSystem.Expand(_iteration);
+
+            _turtle.Iteration = _iteration;
+
+            Camera camera = MainCamera.GetComponent<Camera>();
+            camera.orthographicSize = 1.0f;
+            camera.transform.position = new Vector3();
+        }
+
+
         protected void Start()
         {
             Debug.Log("Main Started");
 
-            _turtle.Iteration = _iteration;
             _turtle.Material = Material;
-            _turtle.Sentence = _lindenmayerSystem.Expand(_iteration);
+
+            Root = this;
         }
 
         private void Update()
         {
-            Debug.Log("Main Input" + InputField.text.ToString());
+            Camera camera = MainCamera.GetComponent<Camera>();
+            //Debug.Log("Main Input" + InputField.text.ToString());
             for (var i = 0; i < _iteration; ++i)
             {
                 if (_turtle.HasNext())
                 {
                     _turtle.Next();
-                    if (_turtle.MaxHeight > MainCamera.GetComponent<Camera>().orthographicSize)
+                    if (_turtle.MaxHeight > camera.orthographicSize)
                     {
-                        MainCamera.GetComponent<Camera>().orthographicSize = _turtle.MaxHeight * 0.5f;
-                        MainCamera.GetComponent<Camera>().transform.position = new Vector3(0.0f, _turtle.MaxHeight / 2.0f, -10);
+                        camera.orthographicSize = _turtle.MaxHeight * 0.5f;
+                        camera.transform.position = new Vector3(0.0f, _turtle.MaxHeight / 2.0f, -10);
                     }
-                }
-                else
-                {
-                    enabled = false;
                 }
             }
         }

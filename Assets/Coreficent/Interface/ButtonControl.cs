@@ -1,5 +1,6 @@
 ﻿namespace Coreficent.Interface
 {
+    using Coreficent.Main;
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -9,8 +10,9 @@
     {
         public void Restart()
         {
-            Debug.Log("on clicked");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Debug.Log("on restart");
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Main.Root.Reset();
         }
     }
 }

@@ -16,9 +16,25 @@
         private int index = 0;
         private Stack<Tuple<Vector2, float>> stack = new Stack<Tuple<Vector2, float>>();
         private float moveDistance = 1.0f;
-        private LineRenderer _line;
+
+        private List<LineRenderer> lines = new List<LineRenderer>();
         private int lineCount = 0;
 
+        public void Reset()
+        {
+            foreach (LineRenderer i in lines)
+            {
+                UnityEngine.Object.Destroy(i.gameObject);
+            }
+            lines.Clear();
+            lineCount = 0;
+            stack.Clear();
+            Position = new Vector2();
+            Angle = 90.0f;
+            index = 0;
+            MaxWidth = 0.0f;
+            MaxHeight = 0.0f;
+        }
         public bool HasNext()
         {
             return index < Sentence.Length;
@@ -59,6 +75,7 @@
             {
                 Debug.Log("Drawing Complete");
             }
+
             if (drawn)
             {
                 return;
@@ -80,30 +97,33 @@
             var y = Mathf.Sin(radian);
             var pos = new Vector2(x * moveDistance, y * moveDistance);
 
-            CreateLine();
+            LineRenderer line = CreateLine();
             //Debug.Log("line start " + Position);
-            _line.SetPosition(0, Position);
+            line.SetPosition(0, Position);
 
             Position += pos;
 
             //Debug.Log("line end " + Position);
-            _line.SetPosition(1, Position);
-            _line = null;
+            line.SetPosition(1, Position);
 
             MaxWidth = Mathf.Max(MaxWidth, Mathf.Abs(Position.x));
             MaxHeight = Mathf.Max(MaxHeight, Mathf.Abs(Position.y));
 
             lineCount++;
         }
-        void CreateLine()
+        private LineRenderer CreateLine()
         {
-            _line = new GameObject("Line" + lineCount).AddComponent<LineRenderer>();
-            _line.material = Material;
-            _line.positionCount = 2;
-            _line.startWidth = Iteration * 0.1f;
-            _line.endWidth = Iteration * 0.1f;
-            _line.useWorldSpace = false;
-            _line.numCapVertices = 50;
+            LineRenderer line = new GameObject("Line" + lineCount).AddComponent<LineRenderer>();
+            line.material = Material;
+            line.positionCount = 2;
+            line.startWidth = Iteration * 0.1f;
+            line.endWidth = Iteration * 0.1f;
+            line.useWorldSpace = false;
+            line.numCapVertices = 50;
+
+            lines.Add(line);
+
+            return line;
         }
     }
 }
