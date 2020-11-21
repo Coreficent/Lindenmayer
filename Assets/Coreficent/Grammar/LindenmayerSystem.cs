@@ -9,7 +9,6 @@
         public string Axiom;
         private List<Tuple<string, string>> rules = new List<Tuple<string, string>>();
 
-
         public LindenmayerSystem()
         {
 

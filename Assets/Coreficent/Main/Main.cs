@@ -14,6 +14,9 @@
         public InputField Axiom;
         public InputField RuleA;
         public InputField RuleB;
+        public InputField Angle;
+        public InputField Length;
+        public InputField Thickness;
         public InputField Iteration;
         public Button Rerender;
         public Button Preset0;
@@ -30,28 +33,22 @@
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
 
+        //TODO error handling
+
         public void Render()
         {
-            //_lindenmayerSystem.Axiom = "F";
-            //_lindenmayerSystem.AddRule("F", "F[+F]F[-F]F");
-
-            //_lindenmayerSystem.Axiom = "F";
-            //_lindenmayerSystem.AddRule("F", "F[+F]F[-F][F]");
-
             _lindenmayerSystem.Reset();
 
             _lindenmayerSystem.Axiom = Axiom.text;
-
             _lindenmayerSystem.AddRule(RuleA.text);
             _lindenmayerSystem.AddRule(RuleB.text);
 
             _turtle.Reset();
-            //TODO error handling
-
-            int iteration = Iteration.text == "" ? 1 : int.Parse(Iteration.text);
-            _turtle.Sentence = _lindenmayerSystem.Expand(iteration);
-
-            _turtle.Iteration = iteration;
+            _turtle.Angle = float.Parse(Angle.text);
+            _turtle.MoveDistance = float.Parse(Length.text);
+            _turtle.Thickness = float.Parse(Thickness.text);
+            _turtle.Iteration = int.Parse(Iteration.text);
+            _turtle.Sentence = _lindenmayerSystem.Expand(_turtle.Iteration);
 
             Camera camera = MainCamera.GetComponent<Camera>();
             camera.orthographicSize = 1.0f;
@@ -71,56 +68,90 @@
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
                     Iteration.text = "5";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 case "1":
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F][F]";
                     RuleB.text = "";
                     Iteration.text = "5";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 case "2":
                     Axiom.text = "F";
                     RuleA.text = "F=FF-[-F+F+F]+[+F-F-F]";
                     RuleB.text = "";
                     Iteration.text = "4";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 case "3":
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X]F[-X]+X";
                     RuleB.text = "F=FF";
                     Iteration.text = "7";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 case "4":
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X][-X]FX";
                     RuleB.text = "F=FF";
                     Iteration.text = "7";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 case "5":
                     Axiom.text = "X";
                     RuleA.text = "X=F-[[X]+X]+F[+FX]-X";
                     RuleB.text = "F=FF";
                     Iteration.text = "5";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 case "6":
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
+                    Iteration.text = "3";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 case "7":
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
+                    Iteration.text = "3";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 case "8":
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
+                    Iteration.text = "3";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 case "9":
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
+                    Iteration.text = "3";
+                    Angle.text = "45.0";
+                    Length.text = "1.0";
+                    Thickness.text = "1.0";
                     break;
                 default:
                     Debug.Log("unexpected preset");
@@ -146,7 +177,7 @@
         private void Update()
         {
             Camera camera = MainCamera.GetComponent<Camera>();
-            //Debug.Log("Main Input" + InputField.text.ToString());
+            // increase the animation batch for larger trees
             for (var i = 0; i < _turtle.Iteration; ++i)
             {
                 if (_turtle.HasNext())

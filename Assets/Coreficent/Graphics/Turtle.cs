@@ -11,13 +11,16 @@
         public float MaxHeight = 0.0f;
         public int Iteration = 0;
 
-        private float Angle = 90.0f;
+        public float MoveDistance = 1.0f;
+        public float Angle = 45.0f;
+        public float Thickness = 1.0f;
+
+        private float defaultAngle = 90.0f;
         private Vector2 Position = new Vector2();
         private int index = 0;
         private Stack<Tuple<Vector2, float>> stack = new Stack<Tuple<Vector2, float>>();
-        private readonly float moveDistance = 1.0f;
-
-        private List<LineRenderer> lines = new List<LineRenderer>();
+        
+        private readonly List<LineRenderer> lines = new List<LineRenderer>();
         private int lineCount = 0;
 
         public void Reset()
@@ -30,7 +33,7 @@
             lineCount = 0;
             stack.Clear();
             Position = new Vector2();
-            Angle = 90.0f;
+            defaultAngle = 90.0f;
             index = 0;
             MaxWidth = 0.0f;
             MaxHeight = 0.0f;
@@ -51,18 +54,18 @@
                         drawn = true;
                         break;
                     case '[':
-                        stack.Push(new Tuple<Vector2, float>(Position, Angle));
+                        stack.Push(new Tuple<Vector2, float>(Position, defaultAngle));
                         break;
                     case ']':
                         Tuple<Vector2, float> tuple = stack.Pop();
                         Position = tuple.Item1;
-                        Angle = tuple.Item2;
+                        defaultAngle = tuple.Item2;
                         break;
                     case '+':
-                        Angle += 45.0f;
+                        defaultAngle += Angle;
                         break;
                     case '-':
-                        Angle -= 45.0f;
+                        defaultAngle -= Angle;
                         break;
                     default:
                         break;
@@ -91,11 +94,11 @@
         public void MoveForward()
         {
             //Debug.Log("draw" + lineCount);
-            var radian = Angle * Mathf.Deg2Rad;
+            var radian = defaultAngle * Mathf.Deg2Rad;
             // reversed for so that it grows from the bottom to top.
             var x = Mathf.Cos(radian);
             var y = Mathf.Sin(radian);
-            var pos = new Vector2(x * moveDistance, y * moveDistance);
+            var pos = new Vector2(x * MoveDistance, y * MoveDistance);
 
             LineRenderer line = CreateLine();
             //Debug.Log("line start " + Position);
@@ -116,8 +119,8 @@
             LineRenderer line = new GameObject("Line" + lineCount).AddComponent<LineRenderer>();
             line.material = Material;
             line.positionCount = 2;
-            line.startWidth = Iteration * 0.1f;
-            line.endWidth = Iteration * 0.1f;
+            line.startWidth = Thickness;
+            line.endWidth = Thickness;
             line.useWorldSpace = false;
             line.numCapVertices = 50;
 
