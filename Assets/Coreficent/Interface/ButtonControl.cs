@@ -14,5 +14,10 @@
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Main.Root.Reset();
         }
+
+        public void SetPreset(string index)
+        {
+            Main.Root.SetPreset(index);
+        }
     }
 }

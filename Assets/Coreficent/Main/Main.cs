@@ -17,7 +17,17 @@
         public InputField RuleA;
         public InputField RuleB;
         public InputField Iteration;
-        public Button ButtonRestart;
+        public Button Render;
+        public Button Preset0;
+        public Button Preset1;
+        public Button Preset2;
+        public Button Preset3;
+        public Button Preset4;
+        public Button Preset5;
+        public Button Preset6;
+        public Button Preset7;
+        public Button Preset8;
+        public Button Preset9;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -54,6 +64,10 @@
             camera.transform.position = new Vector3();
         }
 
+        public void SetPreset(string index)
+        {
+            Debug.Log("preset index" + index);
+        }
 
         protected void Start()
         {
