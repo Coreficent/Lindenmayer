@@ -293,6 +293,7 @@ MonoBehaviour:
   MainCamera: {fileID: 519420028}
   Green: {fileID: 2100000, guid: 6d078695de507e142834894f678200d2, type: 2}
   Red: {fileID: 2100000, guid: adbaedaec1c6fe54085cdbe73dac4e7a, type: 2}
+  Blue: {fileID: 2100000, guid: eac0091e935523545ab607f56ccd521c, type: 2}
   Axiom: {fileID: 1080171648}
   RuleA: {fileID: 822441140}
   RuleB: {fileID: 182563321}

@@ -5,23 +5,36 @@
     using UnityEngine;
     public class Turtle
     {
+        public Material Trunk;
         public Material Branch;
         public Material Leaf;
         public string Sentence = "F[+F]F[-F]F";
         public float MaxWidth = 0.0f;
         public float MaxHeight = 0.0f;
         public int Iteration = 0;
-
         public float MoveDistance = 1.0f;
         public float Angle = 45.0f;
-        public float Thickness = 1.0f;
 
         private float defaultAngle = 90.0f;
         private Vector2 Position = new Vector2();
         private int index = 0;
-        private readonly Stack<Tuple<Vector2, float>> stack = new Stack<Tuple<Vector2, float>>();
+        private readonly Stack<Tuple<Vector2, float, float>> stack = new Stack<Tuple<Vector2, float, float>>();
         private readonly List<LineRenderer> lines = new List<LineRenderer>();
         private int lineCount = 0;
+        private readonly float thicknessMultiplier = 2.0f;
+        private float _thickness = 1.0f;
+        private float _currentThickness = 1.0f;
+        private float _thicknessDiminisherAmount = 0.75f;
+
+        public float Thickness
+        {
+            get { return _thickness; }
+            set
+            {
+                _thickness = value;
+                _currentThickness = value;
+            }
+        }
 
         public void Reset()
         {
@@ -54,16 +67,20 @@
                         drawn = true;
                         break;
                     case '[':
-                        stack.Push(new Tuple<Vector2, float>(Position, defaultAngle));
+                        stack.Push(new Tuple<Vector2, float, float>(Position, defaultAngle, _currentThickness));
+                        _currentThickness *= _thicknessDiminisherAmount;
                         break;
                     case ']':
-                        Tuple<Vector2, float> tuple = stack.Pop();
+                        Tuple<Vector2, float, float> tuple = stack.Pop();
                         Position = tuple.Item1;
                         defaultAngle = tuple.Item2;
+                        _currentThickness = tuple.Item3;
+
                         LineRenderer leaf = lines[lines.Count - 1];
                         leaf.material = Leaf;
-                        leaf.SetPosition(0, leaf.GetPosition(0) - new Vector3(0.0f, 0.0f, 0.1f));
-                        leaf.SetPosition(1, leaf.GetPosition(1) - new Vector3(0.0f, 0.0f, 0.1f));
+
+                        //leaf.SetPosition(0, leaf.GetPosition(0) - new Vector3(0.0f, 0.0f, 0.1f));
+                        //leaf.SetPosition(1, leaf.GetPosition(1) - new Vector3(0.0f, 0.0f, 0.1f));
                         break;
                     case '+':
                         defaultAngle += Angle;
@@ -121,10 +138,10 @@
         private LineRenderer CreateLine()
         {
             LineRenderer line = new GameObject("Segment::" + lineCount).AddComponent<LineRenderer>();
-            line.material = Branch;
+            line.material = _currentThickness < Thickness * _thicknessDiminisherAmount ? Branch : Trunk;
             line.positionCount = 2;
-            line.startWidth = Thickness;
-            line.endWidth = Thickness;
+            line.startWidth = _currentThickness * thicknessMultiplier;
+            line.endWidth = _currentThickness * thicknessMultiplier;
             line.useWorldSpace = false;
             line.numCapVertices = 50;
 

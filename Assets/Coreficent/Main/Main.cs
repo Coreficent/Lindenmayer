@@ -12,6 +12,7 @@
         public GameObject MainCamera;
         public Material Green;
         public Material Red;
+        public Material Blue;
         public InputField Axiom;
         public InputField RuleA;
         public InputField RuleB;
@@ -69,7 +70,7 @@
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
                     Iteration.text = "5";
-                    Angle.text = "45.0";
+                    Angle.text = "25.7";
                     Length.text = "1.0";
                     Thickness.text = "1.0";
                     break;
@@ -78,43 +79,43 @@
                     RuleA.text = "F=F[+F]F[-F][F]";
                     RuleB.text = "";
                     Iteration.text = "5";
-                    Angle.text = "45.0";
+                    Angle.text = "20.0";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.text = "0.5";
                     break;
                 case "2":
                     Axiom.text = "F";
                     RuleA.text = "F=FF-[-F+F+F]+[+F-F-F]";
                     RuleB.text = "";
                     Iteration.text = "4";
-                    Angle.text = "45.0";
+                    Angle.text = "22.5";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.text = "0.25";
                     break;
                 case "3":
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X]F[-X]+X";
                     RuleB.text = "F=FF";
                     Iteration.text = "7";
-                    Angle.text = "45.0";
+                    Angle.text = "20.0";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.text = "2.0";
                     break;
                 case "4":
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X][-X]FX";
                     RuleB.text = "F=FF";
                     Iteration.text = "7";
-                    Angle.text = "45.0";
+                    Angle.text = "25.7";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.text = "2.0";
                     break;
                 case "5":
                     Axiom.text = "X";
                     RuleA.text = "X=F-[[X]+X]+F[+FX]-X";
                     RuleB.text = "F=FF";
                     Iteration.text = "5";
-                    Angle.text = "45.0";
+                    Angle.text = "22.5";
                     Length.text = "1.0";
                     Thickness.text = "1.0";
                     break;
@@ -166,7 +167,8 @@
         {
             Debug.Log("Main Started");
 
-            _turtle.Branch = Red;
+            _turtle.Trunk = Red;
+            _turtle.Branch = Blue;
             _turtle.Leaf = Green;
 
             SetPreset("0");
@@ -179,7 +181,7 @@
         {
             Camera camera = MainCamera.GetComponent<Camera>();
             // increase the animation batch for larger trees
-            for (var i = 0; i < _turtle.Iteration; ++i)
+            for (var i = 0; i < _turtle.Iteration * 2; ++i)
             {
                 if (_turtle.HasNext())
                 {
