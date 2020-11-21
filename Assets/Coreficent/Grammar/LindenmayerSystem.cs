@@ -20,9 +20,10 @@
         }
         public void AddRule(string rule)
         {
-            rule = rule == "" ? "F=FF-[-F+F+F]+[+F-F-F]" : rule;
-
-            rules.Add(new Tuple<string, string>(rule.Substring(0, rule.IndexOf("=") - rule.IndexOf("Rule:") - 1), rule.Substring(rule.IndexOf("=") + 1)));
+            if (rule != "")
+            {
+                rules.Add(new Tuple<string, string>(rule.Substring(0, rule.IndexOf("=") - rule.IndexOf("Rule:") - 1), rule.Substring(rule.IndexOf("=") + 1)));
+            }
         }
         public string Expand(int iteration)
         {

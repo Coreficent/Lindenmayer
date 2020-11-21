@@ -9,8 +9,6 @@
     {
         static public Main Root = null;
 
-        static private int _iteration = 1;
-
         public GameObject MainCamera;
         public Material Material;
         public InputField Axiom;
@@ -42,22 +40,18 @@
 
             _lindenmayerSystem.Reset();
 
-            _lindenmayerSystem.Axiom = Axiom.text == "" ? "F" : Axiom.text;
+            _lindenmayerSystem.Axiom = Axiom.text;
 
             _lindenmayerSystem.AddRule(RuleA.text);
-
-            if (RuleB.text != "")
-            {
-                _lindenmayerSystem.AddRule(RuleB.text);
-            }
-
+            _lindenmayerSystem.AddRule(RuleB.text);
 
             _turtle.Reset();
             //TODO error handling
-            _iteration = Iteration.text == "" ? 1 : int.Parse(Iteration.text);
-            _turtle.Sentence = _lindenmayerSystem.Expand(_iteration);
 
-            _turtle.Iteration = _iteration;
+            int iteration = Iteration.text == "" ? 1 : int.Parse(Iteration.text);
+            _turtle.Sentence = _lindenmayerSystem.Expand(iteration);
+
+            _turtle.Iteration = iteration;
 
             Camera camera = MainCamera.GetComponent<Camera>();
             camera.orthographicSize = 1.0f;
@@ -76,31 +70,37 @@
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
+                    Iteration.text = "5";
                     break;
                 case "1":
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F][F]";
                     RuleB.text = "";
+                    Iteration.text = "5";
                     break;
                 case "2":
                     Axiom.text = "F";
                     RuleA.text = "F=FF-[-F+F+F]+[+F-F-F]";
                     RuleB.text = "";
+                    Iteration.text = "4";
                     break;
                 case "3":
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X]F[-X]+X";
                     RuleB.text = "F=FF";
+                    Iteration.text = "7";
                     break;
                 case "4":
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X][-X]FX";
                     RuleB.text = "F=FF";
+                    Iteration.text = "7";
                     break;
                 case "5":
                     Axiom.text = "X";
                     RuleA.text = "X=F-[[X]+X]+F[+FX]-X";
                     RuleB.text = "F=FF";
+                    Iteration.text = "5";
                     break;
                 case "6":
                     Axiom.text = "F";
@@ -136,6 +136,8 @@
 
             _turtle.Material = Material;
 
+
+            SetPreset("0");
             Render();
 
             Root = this;
@@ -145,7 +147,7 @@
         {
             Camera camera = MainCamera.GetComponent<Camera>();
             //Debug.Log("Main Input" + InputField.text.ToString());
-            for (var i = 0; i < _iteration; ++i)
+            for (var i = 0; i < _turtle.Iteration; ++i)
             {
                 if (_turtle.HasNext())
                 {

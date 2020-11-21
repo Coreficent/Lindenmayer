@@ -296,7 +296,7 @@ MonoBehaviour:
   RuleA: {fileID: 822441140}
   RuleB: {fileID: 182563321}
   Iteration: {fileID: 74899619}
-  Render: {fileID: 155540927}
+  Rerender: {fileID: 155540927}
   Preset0: {fileID: 2078544983}
   Preset1: {fileID: 1649646578}
   Preset2: {fileID: 2050179034}
@@ -482,7 +482,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2112209439}
-        m_MethodName: Restart
+        m_MethodName: Render
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2947,7 +2947,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rule:F=FF-[-F+F+F]+[+F-F-F]
+  m_Text: 'Rule A:'
 --- !u!222 &1734768470
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3294,7 +3294,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 'Iteration: 1'
 --- !u!222 &1993136778
 CanvasRenderer:
   m_ObjectHideFlags: 0
