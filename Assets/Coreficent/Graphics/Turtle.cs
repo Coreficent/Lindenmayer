@@ -5,7 +5,8 @@
     using UnityEngine;
     public class Turtle
     {
-        public Material Material;
+        public Material Branch;
+        public Material Leaf;
         public string Sentence = "F[+F]F[-F]F";
         public float MaxWidth = 0.0f;
         public float MaxHeight = 0.0f;
@@ -18,8 +19,7 @@
         private float defaultAngle = 90.0f;
         private Vector2 Position = new Vector2();
         private int index = 0;
-        private Stack<Tuple<Vector2, float>> stack = new Stack<Tuple<Vector2, float>>();
-        
+        private readonly Stack<Tuple<Vector2, float>> stack = new Stack<Tuple<Vector2, float>>();
         private readonly List<LineRenderer> lines = new List<LineRenderer>();
         private int lineCount = 0;
 
@@ -60,6 +60,10 @@
                         Tuple<Vector2, float> tuple = stack.Pop();
                         Position = tuple.Item1;
                         defaultAngle = tuple.Item2;
+                        LineRenderer leaf = lines[lines.Count - 1];
+                        leaf.material = Leaf;
+                        leaf.SetPosition(0, leaf.GetPosition(0) - new Vector3(0.0f, 0.0f, 0.1f));
+                        leaf.SetPosition(1, leaf.GetPosition(1) - new Vector3(0.0f, 0.0f, 0.1f));
                         break;
                     case '+':
                         defaultAngle += Angle;
@@ -116,8 +120,8 @@
         }
         private LineRenderer CreateLine()
         {
-            LineRenderer line = new GameObject("Line" + lineCount).AddComponent<LineRenderer>();
-            line.material = Material;
+            LineRenderer line = new GameObject("Segment::" + lineCount).AddComponent<LineRenderer>();
+            line.material = Branch;
             line.positionCount = 2;
             line.startWidth = Thickness;
             line.endWidth = Thickness;

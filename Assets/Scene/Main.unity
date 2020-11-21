@@ -291,7 +291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 519420028}
-  Material: {fileID: 2100000, guid: adbaedaec1c6fe54085cdbe73dac4e7a, type: 2}
+  Green: {fileID: 2100000, guid: 6d078695de507e142834894f678200d2, type: 2}
+  Red: {fileID: 2100000, guid: adbaedaec1c6fe54085cdbe73dac4e7a, type: 2}
   Axiom: {fileID: 1080171648}
   RuleA: {fileID: 822441140}
   RuleB: {fileID: 182563321}

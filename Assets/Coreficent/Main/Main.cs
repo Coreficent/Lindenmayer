@@ -10,7 +10,8 @@
         static public Main Root = null;
 
         public GameObject MainCamera;
-        public Material Material;
+        public Material Green;
+        public Material Red;
         public InputField Axiom;
         public InputField RuleA;
         public InputField RuleB;
@@ -165,8 +166,8 @@
         {
             Debug.Log("Main Started");
 
-            _turtle.Material = Material;
-
+            _turtle.Branch = Red;
+            _turtle.Leaf = Green;
 
             SetPreset("0");
             Render();
