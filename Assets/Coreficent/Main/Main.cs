@@ -13,11 +13,11 @@
 
         public GameObject MainCamera;
         public Material Material;
-        public InputField Axion;
+        public InputField Axiom;
         public InputField RuleA;
         public InputField RuleB;
         public InputField Iteration;
-        public Button Render;
+        public Button Rerender;
         public Button Preset0;
         public Button Preset1;
         public Button Preset2;
@@ -32,7 +32,7 @@
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
 
-        public void Reset()
+        public void Render()
         {
             //_lindenmayerSystem.Axiom = "F";
             //_lindenmayerSystem.AddRule("F", "F[+F]F[-F]F");
@@ -42,7 +42,7 @@
 
             _lindenmayerSystem.Reset();
 
-            _lindenmayerSystem.Axiom = Axion.text == "" ? "F" : Axion.text;
+            _lindenmayerSystem.Axiom = Axiom.text == "" ? "F" : Axiom.text;
 
             _lindenmayerSystem.AddRule(RuleA.text);
 
@@ -67,6 +67,67 @@
         public void SetPreset(string index)
         {
             Debug.Log("preset index" + index);
+
+            _lindenmayerSystem.Reset();
+
+            switch (index)
+            {
+                case "0":
+                    Axiom.text = "F";
+                    RuleA.text = "F=F[+F]F[-F]F";
+                    RuleB.text = "";
+                    break;
+                case "1":
+                    Axiom.text = "F";
+                    RuleA.text = "F=F[+F]F[-F][F]";
+                    RuleB.text = "";
+                    break;
+                case "2":
+                    Axiom.text = "F";
+                    RuleA.text = "F=FF-[-F+F+F]+[+F-F-F]";
+                    RuleB.text = "";
+                    break;
+                case "3":
+                    Axiom.text = "X";
+                    RuleA.text = "X=F[+X]F[-X]+X";
+                    RuleB.text = "F=FF";
+                    break;
+                case "4":
+                    Axiom.text = "X";
+                    RuleA.text = "X=F[+X][-X]FX";
+                    RuleB.text = "F=FF";
+                    break;
+                case "5":
+                    Axiom.text = "X";
+                    RuleA.text = "X=F-[[X]+X]+F[+FX]-X";
+                    RuleB.text = "F=FF";
+                    break;
+                case "6":
+                    Axiom.text = "F";
+                    RuleA.text = "F=F[+F]F[-F]F";
+                    RuleB.text = "";
+                    break;
+                case "7":
+                    Axiom.text = "F";
+                    RuleA.text = "F=F[+F]F[-F]F";
+                    RuleB.text = "";
+                    break;
+                case "8":
+                    Axiom.text = "F";
+                    RuleA.text = "F=F[+F]F[-F]F";
+                    RuleB.text = "";
+                    break;
+                case "9":
+                    Axiom.text = "F";
+                    RuleA.text = "F=F[+F]F[-F]F";
+                    RuleB.text = "";
+                    break;
+                default:
+                    Debug.Log("unexpected preset");
+                    break;
+            }
+
+            Render();
         }
 
         protected void Start()
@@ -75,7 +136,7 @@
 
             _turtle.Material = Material;
 
-            Reset();
+            Render();
 
             Root = this;
         }

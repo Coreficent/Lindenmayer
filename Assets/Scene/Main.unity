@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 74899620}
   - component: {fileID: 74899619}
   m_Layer: 5
-  m_Name: InputFieldIteration
+  m_Name: Iteration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 519420028}
   Material: {fileID: 2100000, guid: adbaedaec1c6fe54085cdbe73dac4e7a, type: 2}
-  Axion: {fileID: 1080171648}
+  Axiom: {fileID: 1080171648}
   RuleA: {fileID: 822441140}
   RuleB: {fileID: 182563321}
   Iteration: {fileID: 74899619}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 182563322}
   - component: {fileID: 182563321}
   m_Layer: 5
-  m_Name: InputFieldRuleB
+  m_Name: RuleB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1623,7 +1623,7 @@ GameObject:
   - component: {fileID: 822441141}
   - component: {fileID: 822441140}
   m_Layer: 5
-  m_Name: InputFieldRuleA
+  m_Name: RuleA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1971,7 +1971,7 @@ GameObject:
   - component: {fileID: 1080171649}
   - component: {fileID: 1080171648}
   m_Layer: 5
-  m_Name: InputFieldAxiom
+  m_Name: Axiom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

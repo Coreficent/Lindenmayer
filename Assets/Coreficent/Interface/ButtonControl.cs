@@ -8,11 +8,11 @@
 
     public class ButtonControl : MonoBehaviour
     {
-        public void Restart()
+        public void Render()
         {
             Debug.Log("on restart");
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            Main.Root.Reset();
+            Main.Root.Render();
         }
 
         public void SetPreset(string index)

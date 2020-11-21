@@ -12,6 +12,7 @@
 
         public LindenmayerSystem()
         {
+
         }
         public void Reset()
         {
