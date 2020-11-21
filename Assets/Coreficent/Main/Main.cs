@@ -154,9 +154,13 @@
                     _turtle.Next();
                     if (_turtle.MaxHeight > camera.orthographicSize)
                     {
-                        camera.orthographicSize = _turtle.MaxHeight * 0.5f;
-                        camera.transform.position = new Vector3(0.0f, _turtle.MaxHeight / 2.0f, -10);
+                        camera.orthographicSize = Mathf.Max(_turtle.MaxHeight * 0.5f, camera.orthographicSize);
                     }
+                    if (_turtle.MaxWidth > camera.orthographicSize)
+                    {
+                        camera.orthographicSize = Mathf.Max(_turtle.MaxWidth, camera.orthographicSize);
+                    }
+                    camera.transform.position = new Vector3(0.0f, camera.orthographicSize, -10);
                 }
             }
         }
