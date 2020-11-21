@@ -4,22 +4,22 @@
     using UnityEngine;
     public class LindenmayerSystem
     {
-        private string variables;
-        private string constants;
-        private string axiom;
-        private string rules;
+        public string Axiom;
+        private string ruleIn;
+        private string ruleOut;
+
         public LindenmayerSystem()
         {
             Debug.Log("Lindenmayer System Started");
-            variables = "";
-            constants = "";
-            axiom = "F";
-            rules = "F->F[+F]F[-F]F";
-            Expand(1);
+        }
+        public void AddRule(string input, string output)
+        {
+            ruleIn = input;
+            ruleOut = output;
         }
         public string Expand(int iteration)
         {
-            string itermediate = axiom;
+            string itermediate = Axiom;
             for (var i = 0; i < iteration; ++i)
             {
                 itermediate = Expand(itermediate);
@@ -27,13 +27,14 @@
             return itermediate;
         }
 
-        public string Expand(string sentence)
+        private string Expand(string sentence)
         {
             string result = "";
 
             foreach (char c in sentence)
             {
-                result += c == 'F' ? "F[+F]F[-F]F" : c.ToString();
+                string i = c.ToString();
+                result += i == ruleIn ? ruleOut : i.ToString();
             }
 
             return result;

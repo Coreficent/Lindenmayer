@@ -23,8 +23,16 @@
 
         public void Reset()
         {
-            _turtle.Reset();
+            //_lindenmayerSystem.Axiom = "F";
+            //_lindenmayerSystem.AddRule("F", "F[+F]F[-F]F");
 
+            //_lindenmayerSystem.Axiom = "F";
+            //_lindenmayerSystem.AddRule("F", "F[+F]F[-F][F]");
+
+            _lindenmayerSystem.Axiom = "F";
+            _lindenmayerSystem.AddRule("F", "FF-[-F+F+F]+[+F-F-F]");
+
+            _turtle.Reset();
             //TODO error handling
             _iteration = InputField.text == "" ? 1 : int.Parse(InputField.text);
             _turtle.Sentence = _lindenmayerSystem.Expand(_iteration);
