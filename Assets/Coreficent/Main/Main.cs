@@ -30,14 +30,16 @@
             //_lindenmayerSystem.Axiom = "F";
             //_lindenmayerSystem.AddRule("F", "F[+F]F[-F][F]");
 
+            _lindenmayerSystem.Reset();
+
             _lindenmayerSystem.Axiom = Axion.text == "" ? "F" : Axion.text;
 
-            string ruleA = RuleA.text == "" ? "F=FF-[-F+F+F]+[+F-F-F]" : RuleA.text;
+            _lindenmayerSystem.AddRule(RuleA.text);
 
-            Debug.Log("Rule A::" + ruleA);
-
-            _lindenmayerSystem.AddRule(ruleA.Substring(0, ruleA.IndexOf("=") - ruleA.IndexOf("Rule:") - 1), ruleA.Substring(ruleA.IndexOf("=") + 1));
-
+            if (RuleB.text != "")
+            {
+                _lindenmayerSystem.AddRule(RuleB.text);
+            }
 
 
             _turtle.Reset();
