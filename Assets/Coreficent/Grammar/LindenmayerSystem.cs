@@ -14,6 +14,8 @@
         }
         public void AddRule(string input, string output)
         {
+            Debug.Log("rule in::" + input);
+            Debug.Log("rule out::" + output);
             ruleIn = input;
             ruleOut = output;
         }

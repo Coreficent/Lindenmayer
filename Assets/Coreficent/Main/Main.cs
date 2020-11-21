@@ -11,15 +11,16 @@
 
         static private int _iteration = 1;
 
-
         public GameObject MainCamera;
         public Material Material;
-        public InputField InputField;
+        public InputField Axion;
+        public InputField RuleA;
+        public InputField RuleB;
+        public InputField Iteration;
         public Button ButtonRestart;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
-
 
         public void Reset()
         {
@@ -29,12 +30,19 @@
             //_lindenmayerSystem.Axiom = "F";
             //_lindenmayerSystem.AddRule("F", "F[+F]F[-F][F]");
 
-            _lindenmayerSystem.Axiom = "F";
-            _lindenmayerSystem.AddRule("F", "FF-[-F+F+F]+[+F-F-F]");
+            _lindenmayerSystem.Axiom = Axion.text == "" ? "F" : Axion.text;
+
+            string ruleA = RuleA.text == "" ? "F=FF-[-F+F+F]+[+F-F-F]" : RuleA.text;
+
+            Debug.Log("Rule A::" + ruleA);
+
+            _lindenmayerSystem.AddRule(ruleA.Substring(0, ruleA.IndexOf("=") - ruleA.IndexOf("Rule:") - 1), ruleA.Substring(ruleA.IndexOf("=") + 1));
+
+
 
             _turtle.Reset();
             //TODO error handling
-            _iteration = InputField.text == "" ? 1 : int.Parse(InputField.text);
+            _iteration = Iteration.text == "" ? 1 : int.Parse(Iteration.text);
             _turtle.Sentence = _lindenmayerSystem.Expand(_iteration);
 
             _turtle.Iteration = _iteration;
