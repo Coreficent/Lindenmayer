@@ -109,38 +109,38 @@
                     Thickness.value = 4.0f;
                     break;
                 case 6:
-                    Axiom.text = "F";
-                    RuleA.text = "F=F[+F]F[-F]F";
-                    RuleB.text = "";
-                    Iteration.value = 3;
-                    Angle.value = 45.0f;
-                    Length.value = 1.0f;
-                    Thickness.value = 4.0f;
+                    Axiom.text = "Z";
+                    RuleA.text = "Z=ZFX[+Z][-Z]";
+                    RuleB.text = "X=X[-FFF][+FFF]FX";
+                    Iteration.value = 4;
+                    Angle.value = 15.0f;
+                    Length.value = 3.0f;
+                    Thickness.value = 1.0f;
                     break;
                 case 7:
-                    Axiom.text = "F";
-                    RuleA.text = "F=F[+F]F[-F]F";
+                    Axiom.text = "FX";
+                    RuleA.text = "X=[-FX][+FX]";
                     RuleB.text = "";
-                    Iteration.value = 3;
-                    Angle.value = 45.0f;
+                    Iteration.value = 10;
+                    Angle.value = 20.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
                 case 8:
-                    Axiom.text = "F";
-                    RuleA.text = "F=F[+F]F[-F]F";
-                    RuleB.text = "";
-                    Iteration.value = 3;
+                    Axiom.text = "X";
+                    RuleA.text = "X=F[+X]FXF[-X]F";
+                    RuleB.text = "F=FF";
+                    Iteration.value = 4;
                     Angle.value = 45.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
                 case 9:
-                    Axiom.text = "F";
-                    RuleA.text = "F=F[+F]F[-F]F";
-                    RuleB.text = "";
-                    Iteration.value = 3;
-                    Angle.value = 45.0f;
+                    Axiom.text = "+++FX";
+                    RuleA.text = "X=[-FY]+FX";
+                    RuleB.text = "Y=FX+FY-FX";
+                    Iteration.value = 4;
+                    Angle.value = 10.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
