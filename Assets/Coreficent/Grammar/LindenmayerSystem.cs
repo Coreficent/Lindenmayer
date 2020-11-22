@@ -30,7 +30,7 @@
             for (var i = 0; i < iteration; ++i)
             {
                 itermediate = Expand(itermediate);
-                Debug.Log("itermediate::" + itermediate);
+                //Debug.Log("itermediate::" + itermediate);
             }
             return itermediate;
         }

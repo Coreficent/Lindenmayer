@@ -48,7 +48,7 @@
         }
         public void SetPreset(int index)
         {
-            Debug.Log("preset index" + index);
+            //Debug.Log("preset index" + index);
 
             _lindenmayerSystem.Reset();
 
