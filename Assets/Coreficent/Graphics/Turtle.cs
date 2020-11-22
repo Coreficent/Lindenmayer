@@ -5,6 +5,7 @@
     using UnityEngine;
     public class Turtle
     {
+        public Material Simple;
         public Material Trunk;
         public Material Branch;
         public Material Leaf;
@@ -17,6 +18,9 @@
         public float AngleDeviation = 0.0f;
         public float Length = 1.0f;
         public float LengthDeviation = 1.0f;
+
+        public enum RenderStyle { Simple, Complex };
+        public RenderStyle Style = RenderStyle.Simple;
 
         private float _defaultAngle = 90.0f;
         private Vector2 _position = new Vector2();
@@ -53,6 +57,7 @@
             _index = 0;
             MaxWidth = 0.0f;
             MaxHeight = 0.0f;
+            Style = RenderStyle.Simple;
         }
         public bool HasNext()
         {
@@ -79,9 +84,11 @@
                         _defaultAngle = tuple.Item2;
                         _currentThickness = tuple.Item3;
 
-                        LineRenderer leaf = _lines[_lines.Count - 1];
-                        leaf.material = Leaf;
-
+                        if (Style == RenderStyle.Complex)
+                        {
+                            LineRenderer leaf = _lines[_lines.Count - 1];
+                            leaf.material = Leaf;
+                        }
                         //leaf.SetPosition(0, leaf.GetPosition(0) - new Vector3(0.0f, 0.0f, 0.1f));
                         //leaf.SetPosition(1, leaf.GetPosition(1) - new Vector3(0.0f, 0.0f, 0.1f));
                         break;
@@ -135,7 +142,7 @@
         private LineRenderer CreateLine()
         {
             LineRenderer line = new GameObject("Segment::" + _lineCount).AddComponent<LineRenderer>();
-            line.material = _currentThickness < Thickness * _thicknessDiminisherAmount ? Branch : Trunk;
+            line.material = Style == RenderStyle.Simple ? Simple : _currentThickness < Thickness * _thicknessDiminisherAmount ? Branch : Trunk;
             line.positionCount = 2;
             line.startWidth = _currentThickness * _thicknessMultiplier;
             line.endWidth = _currentThickness * _thicknessMultiplier;

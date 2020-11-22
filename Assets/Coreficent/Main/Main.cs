@@ -10,6 +10,7 @@
         static public Main Root = null;
 
         public GameObject MainCamera;
+        public Material Black;
         public Material Green;
         public Material Red;
         public Material Blue;
@@ -27,6 +28,7 @@
         public Button Rerender;
         public Image Progress;
         public Toggle Animation;
+        public Toggle Style;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -36,7 +38,6 @@
         public void Render()
         {
             _lindenmayerSystem.Reset();
-
             _lindenmayerSystem.Axiom = Axiom.text;
             _lindenmayerSystem.AddRule(RuleA.text);
             _lindenmayerSystem.AddRule(RuleB.text);
@@ -50,6 +51,7 @@
             _turtle.Thickness = Thickness.value;
             _turtle.Iteration = (int)Iteration.value;
             _turtle.Sentence = _lindenmayerSystem.Expand(_turtle.Iteration);
+            _turtle.Style = Style.isOn ? Turtle.RenderStyle.Complex : Turtle.RenderStyle.Simple;
 
             Camera camera = MainCamera.GetComponent<Camera>();
             camera.orthographicSize = 1.0f;
@@ -218,9 +220,11 @@
         {
             Debug.Log("Main Started");
 
+            _turtle.Simple = Black;
             _turtle.Trunk = Red;
             _turtle.Branch = Blue;
             _turtle.Leaf = Green;
+
 
             SetPreset(0);
             Render();
