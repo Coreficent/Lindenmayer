@@ -21,7 +21,7 @@
         private readonly Stack<Tuple<Vector2, float, float>> stack = new Stack<Tuple<Vector2, float, float>>();
         private readonly List<LineRenderer> lines = new List<LineRenderer>();
         private int lineCount = 0;
-        private readonly float thicknessMultiplier = 2.0f;
+        private readonly float thicknessMultiplier = 0.5f;
         private float _thickness = 1.0f;
         private float _currentThickness = 1.0f;
         private float _thicknessDiminisherAmount = 0.75f;

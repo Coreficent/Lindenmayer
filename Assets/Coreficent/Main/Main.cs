@@ -18,7 +18,7 @@
         public InputField RuleB;
         public InputField Angle;
         public InputField Length;
-        public InputField Thickness;
+        public Slider Thickness;
         public InputField Iteration;
         public Button Rerender;
 
@@ -38,7 +38,8 @@
             _turtle.Reset();
             _turtle.Angle = float.Parse(Angle.text);
             _turtle.MoveDistance = float.Parse(Length.text);
-            _turtle.Thickness = float.Parse(Thickness.text);
+            //_turtle.Thickness = float.Parse(Thickness.text);
+            _turtle.Thickness = Thickness.value;
             _turtle.Iteration = int.Parse(Iteration.text);
             _turtle.Sentence = _lindenmayerSystem.Expand(_turtle.Iteration);
 
@@ -46,7 +47,10 @@
             camera.orthographicSize = 1.0f;
             camera.transform.position = new Vector3();
         }
-
+        public void SetThickness(float thickness)
+        {
+            _turtle.Thickness = thickness;
+        }
         public void SetPreset(int index)
         {
             Debug.Log("preset index" + index);
@@ -62,7 +66,7 @@
                     Iteration.text = "5";
                     Angle.text = "25.7";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.value = 4.0f;
                     break;
                 case 1:
                     Axiom.text = "F";
@@ -71,7 +75,7 @@
                     Iteration.text = "5";
                     Angle.text = "20.0";
                     Length.text = "1.0";
-                    Thickness.text = "0.5";
+                    Thickness.value = 2.0f;
                     break;
                 case 2:
                     Axiom.text = "F";
@@ -80,7 +84,7 @@
                     Iteration.text = "4";
                     Angle.text = "22.5";
                     Length.text = "1.0";
-                    Thickness.text = "0.25";
+                    Thickness.value = 1.0f;
                     break;
                 case 3:
                     Axiom.text = "X";
@@ -89,7 +93,7 @@
                     Iteration.text = "7";
                     Angle.text = "20.0";
                     Length.text = "1.0";
-                    Thickness.text = "2.0";
+                    Thickness.value = 8.0f;
                     break;
                 case 4:
                     Axiom.text = "X";
@@ -98,7 +102,7 @@
                     Iteration.text = "7";
                     Angle.text = "25.7";
                     Length.text = "1.0";
-                    Thickness.text = "2.0";
+                    Thickness.value = 8.0f;
                     break;
                 case 5:
                     Axiom.text = "X";
@@ -107,7 +111,7 @@
                     Iteration.text = "5";
                     Angle.text = "22.5";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.value = 4.0f;
                     break;
                 case 6:
                     Axiom.text = "F";
@@ -116,7 +120,7 @@
                     Iteration.text = "3";
                     Angle.text = "45.0";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.value = 4.0f;
                     break;
                 case 7:
                     Axiom.text = "F";
@@ -125,7 +129,7 @@
                     Iteration.text = "3";
                     Angle.text = "45.0";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.value = 4.0f;
                     break;
                 case 8:
                     Axiom.text = "F";
@@ -134,7 +138,7 @@
                     Iteration.text = "3";
                     Angle.text = "45.0";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.value = 4.0f;
                     break;
                 case 9:
                     Axiom.text = "F";
@@ -143,7 +147,7 @@
                     Iteration.text = "3";
                     Angle.text = "45.0";
                     Length.text = "1.0";
-                    Thickness.text = "1.0";
+                    Thickness.value = 4.0f;
                     break;
                 default:
                     Debug.Log("unexpected preset");
