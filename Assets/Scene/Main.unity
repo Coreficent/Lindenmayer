@@ -898,8 +898,6 @@ Transform:
   - {fileID: 1174358304}
   - {fileID: 554963929}
   - {fileID: 700911535}
-  - {fileID: 1050306932}
-  - {fileID: 405351875}
   m_Father: {fileID: 1793792663}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1091,7 +1089,7 @@ RectTransform:
   - {fileID: 1376971461}
   - {fileID: 1096698377}
   m_Father: {fileID: 389882130}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1260,6 +1258,8 @@ Transform:
   - {fileID: 1527044036}
   - {fileID: 155540926}
   - {fileID: 1968961487}
+  - {fileID: 1050306932}
+  - {fileID: 405351875}
   - {fileID: 342906255}
   - {fileID: 1012486978}
   m_Father: {fileID: 1793792663}
@@ -1296,12 +1296,12 @@ RectTransform:
   - {fileID: 1186484474}
   - {fileID: 199438152}
   - {fileID: 1688269456}
-  m_Father: {fileID: 317709358}
-  m_RootOrder: 10
+  m_Father: {fileID: 389882130}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -251.71649, y: -181.43114}
+  m_AnchoredPosition: {x: 279, y: -99}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &405351876
@@ -1353,7 +1353,18 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2112209439}
+        m_MethodName: Render
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &407777594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,7 +3008,7 @@ RectTransform:
   - {fileID: 824482049}
   - {fileID: 319741949}
   m_Father: {fileID: 389882130}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3167,12 +3178,12 @@ RectTransform:
   - {fileID: 1975620178}
   - {fileID: 1240003928}
   - {fileID: 503664601}
-  m_Father: {fileID: 317709358}
-  m_RootOrder: 9
+  m_Father: {fileID: 389882130}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -251.71649, y: -147.03113}
+  m_AnchoredPosition: {x: 278, y: -68}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1050306933
@@ -3224,7 +3235,18 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2112209439}
+        m_MethodName: Render
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1080171646
 GameObject:
   m_ObjectHideFlags: 0

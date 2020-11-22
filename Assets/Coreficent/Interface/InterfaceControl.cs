@@ -7,12 +7,18 @@
     {
         public void Render()
         {
-            Main.Root.Render();
+            if (Main.Root)
+            {
+                Main.Root.Render();
+            }
         }
         public void SelectPreset(int index)
         {
-            Debug.Log("index::" + index);
-            Main.Root.SetPreset(index);
+            // Debug.Log("index::" + index);
+            if (Main.Root)
+            {
+                Main.Root.SetPreset(index);
+            }
         }
     }
 }
