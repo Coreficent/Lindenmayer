@@ -230,11 +230,11 @@
 
         private void Update()
         {
-            Camera camera = MainCamera.GetComponent<Camera>();
-            // increase the animation batch for larger trees
-            for (var i = 0; i < (Animation.isOn ? _turtle.Iteration * Time.deltaTime * 50.0f : _turtle.Sentence.Length); ++i)
+            if (_turtle.HasNext())
             {
-                if (_turtle.HasNext())
+                Camera camera = MainCamera.GetComponent<Camera>();
+                // increase the animation batch for larger trees
+                for (var i = 0; i < (Animation.isOn ? _turtle.Iteration * Time.deltaTime * 50.0f : _turtle.Sentence.Length); ++i)
                 {
                     _turtle.Next();
                     if (_turtle.MaxHeight > camera.orthographicSize)
@@ -247,8 +247,8 @@
                     }
                     camera.transform.position = new Vector3(0.0f, camera.orthographicSize, -10);
                 }
+                Progress.transform.localScale = new Vector3(_turtle.Progress, 1.0f, 1.0f);
             }
-            Progress.transform.localScale = new Vector3(_turtle.Progress, 1.0f, 1.0f);
         }
     }
 }

@@ -96,15 +96,8 @@
                     default:
                         break;
                 }
-                //Debug.Log("location: " + Position);
-                //Debug.Log("angle: " + Angle);
                 ++_index;
             }
-            else
-            {
-                Debug.Log("Drawing Complete");
-            }
-
             if (drawn)
             {
                 return;
