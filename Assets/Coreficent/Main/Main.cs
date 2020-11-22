@@ -21,16 +21,6 @@
         public InputField Thickness;
         public InputField Iteration;
         public Button Rerender;
-        public Button Preset0;
-        public Button Preset1;
-        public Button Preset2;
-        public Button Preset3;
-        public Button Preset4;
-        public Button Preset5;
-        public Button Preset6;
-        public Button Preset7;
-        public Button Preset8;
-        public Button Preset9;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -57,7 +47,7 @@
             camera.transform.position = new Vector3();
         }
 
-        public void SetPreset(string index)
+        public void SetPreset(int index)
         {
             Debug.Log("preset index" + index);
 
@@ -65,7 +55,7 @@
 
             switch (index)
             {
-                case "0":
+                case 0:
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
@@ -74,7 +64,7 @@
                     Length.text = "1.0";
                     Thickness.text = "1.0";
                     break;
-                case "1":
+                case 1:
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F][F]";
                     RuleB.text = "";
@@ -83,7 +73,7 @@
                     Length.text = "1.0";
                     Thickness.text = "0.5";
                     break;
-                case "2":
+                case 2:
                     Axiom.text = "F";
                     RuleA.text = "F=FF-[-F+F+F]+[+F-F-F]";
                     RuleB.text = "";
@@ -92,7 +82,7 @@
                     Length.text = "1.0";
                     Thickness.text = "0.25";
                     break;
-                case "3":
+                case 3:
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X]F[-X]+X";
                     RuleB.text = "F=FF";
@@ -101,7 +91,7 @@
                     Length.text = "1.0";
                     Thickness.text = "2.0";
                     break;
-                case "4":
+                case 4:
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X][-X]FX";
                     RuleB.text = "F=FF";
@@ -110,7 +100,7 @@
                     Length.text = "1.0";
                     Thickness.text = "2.0";
                     break;
-                case "5":
+                case 5:
                     Axiom.text = "X";
                     RuleA.text = "X=F-[[X]+X]+F[+FX]-X";
                     RuleB.text = "F=FF";
@@ -119,7 +109,7 @@
                     Length.text = "1.0";
                     Thickness.text = "1.0";
                     break;
-                case "6":
+                case 6:
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
@@ -128,7 +118,7 @@
                     Length.text = "1.0";
                     Thickness.text = "1.0";
                     break;
-                case "7":
+                case 7:
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
@@ -137,7 +127,7 @@
                     Length.text = "1.0";
                     Thickness.text = "1.0";
                     break;
-                case "8":
+                case 8:
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
@@ -146,7 +136,7 @@
                     Length.text = "1.0";
                     Thickness.text = "1.0";
                     break;
-                case "9":
+                case 9:
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
@@ -171,7 +161,7 @@
             _turtle.Branch = Blue;
             _turtle.Leaf = Green;
 
-            SetPreset("0");
+            SetPreset(0);
             Render();
 
             Root = this;
