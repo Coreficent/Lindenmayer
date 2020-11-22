@@ -16,7 +16,7 @@
         public InputField Axiom;
         public InputField RuleA;
         public InputField RuleB;
-        public InputField Angle;
+        public Slider Angle;
         public Slider Length;
         public Slider Thickness;
         public InputField Iteration;
@@ -36,7 +36,7 @@
             _lindenmayerSystem.AddRule(RuleB.text);
 
             _turtle.Reset();
-            _turtle.Angle = float.Parse(Angle.text);
+            _turtle.Angle = Angle.value;
             _turtle.MoveDistance = Length.value;
             _turtle.Thickness = Thickness.value;
             _turtle.Iteration = int.Parse(Iteration.text);
@@ -59,7 +59,7 @@
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
                     Iteration.text = "5";
-                    Angle.text = "25.7";
+                    Angle.value = 25.7f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
@@ -68,7 +68,7 @@
                     RuleA.text = "F=F[+F]F[-F][F]";
                     RuleB.text = "";
                     Iteration.text = "5";
-                    Angle.text = "20.0";
+                    Angle.value = 20.0f;
                     Length.value = 1.0f;
                     Thickness.value = 2.0f;
                     break;
@@ -77,7 +77,7 @@
                     RuleA.text = "F=FF-[-F+F+F]+[+F-F-F]";
                     RuleB.text = "";
                     Iteration.text = "4";
-                    Angle.text = "22.5";
+                    Angle.value = 22.5f;
                     Length.value = 1.0f;
                     Thickness.value = 1.0f;
                     break;
@@ -86,7 +86,7 @@
                     RuleA.text = "X=F[+X]F[-X]+X";
                     RuleB.text = "F=FF";
                     Iteration.text = "7";
-                    Angle.text = "20.0";
+                    Angle.value = 20.0f;
                     Length.value = 1.0f;
                     Thickness.value = 8.0f;
                     break;
@@ -95,7 +95,7 @@
                     RuleA.text = "X=F[+X][-X]FX";
                     RuleB.text = "F=FF";
                     Iteration.text = "7";
-                    Angle.text = "25.7";
+                    Angle.value = 25.7f;
                     Length.value = 1.0f;
                     Thickness.value = 8.0f;
                     break;
@@ -104,7 +104,7 @@
                     RuleA.text = "X=F-[[X]+X]+F[+FX]-X";
                     RuleB.text = "F=FF";
                     Iteration.text = "5";
-                    Angle.text = "22.5";
+                    Angle.value = 22.5f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
@@ -113,7 +113,7 @@
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
                     Iteration.text = "3";
-                    Angle.text = "45.0";
+                    Angle.value = 45.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
@@ -122,7 +122,7 @@
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
                     Iteration.text = "3";
-                    Angle.text = "45.0";
+                    Angle.value = 45.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
@@ -131,7 +131,7 @@
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
                     Iteration.text = "3";
-                    Angle.text = "45.0";
+                    Angle.value = 45.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
@@ -140,7 +140,7 @@
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
                     Iteration.text = "3";
-                    Angle.text = "45.0";
+                    Angle.value = 45.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
