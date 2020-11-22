@@ -15,9 +15,7 @@
         public Material Blue;
         public InputField Axiom;
         public InputField RuleA;
-        public Slider RuleChanceA;
         public InputField RuleB;
-        public Slider RuleChanceB;
         public Slider Angle;
         public Slider AngleDeviation;
         public Slider Length;
@@ -36,8 +34,8 @@
             _lindenmayerSystem.Reset();
 
             _lindenmayerSystem.Axiom = Axiom.text;
-            _lindenmayerSystem.AddRule(RuleA.text, RuleChanceA.value);
-            _lindenmayerSystem.AddRule(RuleB.text, RuleChanceB.value);
+            _lindenmayerSystem.AddRule(RuleA.text);
+            _lindenmayerSystem.AddRule(RuleB.text);
 
             _turtle.Reset();
             _turtle.Angle = Angle.value;

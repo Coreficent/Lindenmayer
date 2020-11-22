@@ -7,7 +7,7 @@
     public class LindenmayerSystem
     {
         public string Axiom;
-        private List<Tuple<string, string, float>> rules = new List<Tuple<string, string, float>>();
+        private List<Tuple<string, string>> rules = new List<Tuple<string, string>>();
 
         public LindenmayerSystem()
         {
@@ -17,11 +17,11 @@
         {
             rules.Clear();
         }
-        public void AddRule(string rule, float chance)
+        public void AddRule(string rule)
         {
             if (rule != "")
             {
-                rules.Add(new Tuple<string, string, float>(rule.Substring(0, rule.IndexOf("=") - rule.IndexOf("Rule:") - 1), rule.Substring(rule.IndexOf("=") + 1), chance));
+                rules.Add(new Tuple<string, string>(rule.Substring(0, rule.IndexOf("=") - rule.IndexOf("Rule:") - 1), rule.Substring(rule.IndexOf("=") + 1)));
             }
         }
         public string Expand(int iteration)
@@ -38,16 +38,13 @@
         private string Expand(string sentence)
         {
             string result = sentence;
-            foreach (Tuple<string, string, float> rule in rules)
+            foreach (Tuple<string, string> rule in rules)
             {
-                if (UnityEngine.Random.Range(0.0f, 0.9999f) < rule.Item3)
-                {
-                    result = Expand(result, rule);
-                }
+                result = Expand(result, rule);
             }
             return result;
         }
-        private string Expand(string sentence, Tuple<string, string, float> rule)
+        private string Expand(string sentence, Tuple<string, string> rule)
         {
             StringBuilder result = new StringBuilder();
             foreach (char c in sentence)
