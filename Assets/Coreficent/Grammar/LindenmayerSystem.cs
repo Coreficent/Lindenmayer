@@ -43,6 +43,7 @@
                 itermediate = Expand(itermediate);
                 //Debug.Log("itermediate::" + itermediate);
             }
+            Debug.Log("Sentence Size::" + itermediate.Length);
             return itermediate;
         }
 

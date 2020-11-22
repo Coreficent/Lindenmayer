@@ -65,6 +65,8 @@
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 5;
                     Angle.value = 25.7f;
                     Length.value = 1.0f;
@@ -76,6 +78,8 @@
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F][F]";
                     RuleB.text = "";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 5;
                     Angle.value = 20.0f;
                     Length.value = 1.0f;
@@ -87,10 +91,12 @@
                     Axiom.text = "F";
                     RuleA.text = "F=FF-[-F+F+F]+[+F-F-F]";
                     RuleB.text = "";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 4;
                     Angle.value = 22.5f;
                     Length.value = 1.0f;
-                    Thickness.value = 1.0f; 
+                    Thickness.value = 1.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
                     break;
@@ -98,6 +104,8 @@
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X]F[-X]+X";
                     RuleB.text = "F=FF";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 7;
                     Angle.value = 20.0f;
                     Length.value = 1.0f;
@@ -109,6 +117,8 @@
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X][-X]FX";
                     RuleB.text = "F=FF";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 7;
                     Angle.value = 25.7f;
                     Length.value = 1.0f;
@@ -120,6 +130,8 @@
                     Axiom.text = "X";
                     RuleA.text = "X=F-[[X]+X]+F[+FX]-X";
                     RuleB.text = "F=FF";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 5;
                     Angle.value = 22.5f;
                     Length.value = 1.0f;
@@ -131,6 +143,8 @@
                     Axiom.text = "Z";
                     RuleA.text = "Z=ZFX[+Z][-Z]";
                     RuleB.text = "X=X[-FFF][+FFF]FX";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 4;
                     Angle.value = 15.0f;
                     Length.value = 3.0f;
@@ -142,6 +156,8 @@
                     Axiom.text = "FX";
                     RuleA.text = "X=[-FX][+FX]";
                     RuleB.text = "";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 10;
                     Angle.value = 20.0f;
                     Length.value = 1.0f;
@@ -153,6 +169,8 @@
                     Axiom.text = "F";
                     RuleA.text = "F=FF[+F][-F]";
                     RuleB.text = "";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 7;
                     Angle.value = 90.0f;
                     Length.value = 1.0f;
@@ -164,12 +182,27 @@
                     Axiom.text = "X";
                     RuleA.text = "X=[+++FFFF-F-F-F[X]-F--F--F--F--F][---FFFF+F+F+F[X]+F++F++F++F++F]";
                     RuleB.text = "F=FF";
+                    RuleC1.text = "";
+                    RuleC2.text = "";
                     Iteration.value = 5;
                     Angle.value = 15.0f;
                     Length.value = 1.0f;
                     Thickness.value = 25.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
+                    break;
+                case 10:
+                    Axiom.text = "X";
+                    RuleA.text = "X=[-FX][+FX]";
+                    RuleB.text = "F=FF";
+                    RuleC1.text = "X=[-FX]FX[+FX]";
+                    RuleC2.text = "X=FX[-FX][+FX]FX";
+                    Iteration.value = 4;
+                    Angle.value = 15.0f;
+                    Length.value = 1.0f;
+                    Thickness.value = 10.0f;
+                    AngleDeviation.value = 45.0f;
+                    LengthDeviation.value = 10.0f;
                     break;
                 default:
                     Debug.Log("unexpected preset");

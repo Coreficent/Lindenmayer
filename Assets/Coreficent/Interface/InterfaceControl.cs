@@ -14,6 +14,7 @@
         }
         public void SelectPreset(int index)
         {
+            Debug.Log("index::" + index);
             Main.Root.SetPreset(index);
         }
     }
