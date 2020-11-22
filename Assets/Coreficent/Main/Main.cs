@@ -25,6 +25,7 @@
         public Slider Thickness;
         public Slider Iteration;
         public Button Rerender;
+        public Image Progress;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -246,6 +247,7 @@
                     camera.transform.position = new Vector3(0.0f, camera.orthographicSize, -10);
                 }
             }
+            Progress.transform.localScale = new Vector3(_turtle.Progress, 1.0f, 1.0f);
         }
     }
 }
