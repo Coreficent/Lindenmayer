@@ -26,6 +26,7 @@
         public Slider Iteration;
         public Button Rerender;
         public Image Progress;
+        public Toggle Animation;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -231,7 +232,7 @@
         {
             Camera camera = MainCamera.GetComponent<Camera>();
             // increase the animation batch for larger trees
-            for (var i = 0; i < _turtle.Iteration * Time.deltaTime * 50.0f; ++i)
+            for (var i = 0; i < (Animation.isOn ? _turtle.Iteration * Time.deltaTime * 50.0f : _turtle.Sentence.Length); ++i)
             {
                 if (_turtle.HasNext())
                 {
