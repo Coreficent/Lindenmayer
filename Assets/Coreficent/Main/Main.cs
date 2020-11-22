@@ -161,7 +161,7 @@
                     break;
                 case 9:
                     Axiom.text = "X";
-                    RuleA.text = "X=[+++FFFF-F-F-F[+FFF-X]-F--F--F--F--F][---FFFF+F+F+F[-FFF+X]+F++F++F++F++F]";
+                    RuleA.text = "X=[+++FFFF-F-F-F[X]-F--F--F--F--F][---FFFF+F+F+F[X]+F++F++F++F++F]";
                     RuleB.text = "F=FF";
                     Iteration.value = 5;
                     Angle.value = 15.0f;
