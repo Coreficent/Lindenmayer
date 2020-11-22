@@ -49,13 +49,13 @@
         }
         private string Expand(string sentence, Tuple<string, string, float> rule)
         {
-            string result = "";
+            StringBuilder result = new StringBuilder();
             foreach (char c in sentence)
             {
-                string i = c.ToString();
-                result += i == rule.Item1 ? rule.Item2 : i.ToString();
+                string s = c.ToString();
+                result.Append(s == rule.Item1 ? rule.Item2 : s);
             }
-            return result;
+            return result.ToString();
         }
     }
 }
