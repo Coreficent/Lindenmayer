@@ -15,9 +15,13 @@
         public Material Blue;
         public InputField Axiom;
         public InputField RuleA;
+        public Slider RuleChanceA;
         public InputField RuleB;
+        public Slider RuleChanceB;
         public Slider Angle;
+        public Slider AngleDeviation;
         public Slider Length;
+        public Slider LengthDeviation;
         public Slider Thickness;
         public Slider Iteration;
         public Button Rerender;
@@ -32,12 +36,14 @@
             _lindenmayerSystem.Reset();
 
             _lindenmayerSystem.Axiom = Axiom.text;
-            _lindenmayerSystem.AddRule(RuleA.text);
-            _lindenmayerSystem.AddRule(RuleB.text);
+            _lindenmayerSystem.AddRule(RuleA.text, RuleChanceA.value);
+            _lindenmayerSystem.AddRule(RuleB.text, RuleChanceB.value);
 
             _turtle.Reset();
             _turtle.Angle = Angle.value;
-            _turtle.MoveDistance = Length.value;
+            _turtle.AngleDeviation = AngleDeviation.value;
+            _turtle.Length = Length.value;
+            _turtle.LengthDeviation = LengthDeviation.value;
             _turtle.Thickness = Thickness.value;
             _turtle.Iteration = (int)Iteration.value;
             _turtle.Sentence = _lindenmayerSystem.Expand(_turtle.Iteration);
@@ -62,6 +68,8 @@
                     Angle.value = 25.7f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 case 1:
                     Axiom.text = "F";
@@ -71,6 +79,8 @@
                     Angle.value = 20.0f;
                     Length.value = 1.0f;
                     Thickness.value = 2.0f;
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 case 2:
                     Axiom.text = "F";
@@ -79,7 +89,9 @@
                     Iteration.value = 4;
                     Angle.value = 22.5f;
                     Length.value = 1.0f;
-                    Thickness.value = 1.0f;
+                    Thickness.value = 1.0f; 
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 case 3:
                     Axiom.text = "X";
@@ -89,6 +101,8 @@
                     Angle.value = 20.0f;
                     Length.value = 1.0f;
                     Thickness.value = 8.0f;
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 case 4:
                     Axiom.text = "X";
@@ -98,6 +112,8 @@
                     Angle.value = 25.7f;
                     Length.value = 1.0f;
                     Thickness.value = 8.0f;
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 case 5:
                     Axiom.text = "X";
@@ -107,6 +123,8 @@
                     Angle.value = 22.5f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 case 6:
                     Axiom.text = "Z";
@@ -116,6 +134,8 @@
                     Angle.value = 15.0f;
                     Length.value = 3.0f;
                     Thickness.value = 1.0f;
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 case 7:
                     Axiom.text = "FX";
@@ -125,24 +145,30 @@
                     Angle.value = 20.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 case 8:
                     Axiom.text = "F";
                     RuleA.text = "F=FF[+F][-F]";
                     RuleB.text = "";
-                    Iteration.value = 6;
+                    Iteration.value = 7;
                     Angle.value = 90.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 case 9:
-                    Axiom.text = "+++FX";
-                    RuleA.text = "X=[-FY]+FX";
-                    RuleB.text = "Y=FX+FY-FX";
-                    Iteration.value = 4;
-                    Angle.value = 10.0f;
+                    Axiom.text = "X";
+                    RuleA.text = "X=[+++FFFF-F-F-F[+FFF-X]-F--F--F--F--F][---FFFF+F+F+F[-FFF+X]+F++F++F++F++F]";
+                    RuleB.text = "F=FF";
+                    Iteration.value = 5;
+                    Angle.value = 15.0f;
                     Length.value = 1.0f;
-                    Thickness.value = 4.0f;
+                    Thickness.value = 25.0f;
+                    AngleDeviation.value = 0.0f;
+                    LengthDeviation.value = 0.0f;
                     break;
                 default:
                     Debug.Log("unexpected preset");

@@ -12,8 +12,12 @@
         public float MaxWidth = 0.0f;
         public float MaxHeight = 0.0f;
         public int Iteration = 0;
-        public float MoveDistance = 1.0f;
+
         public float Angle = 45.0f;
+        public float AngleDeviation = 0.0f;
+        public float Length = 1.0f;
+        public float LengthDeviation = 1.0f;
+
 
         private float defaultAngle = 90.0f;
         private Vector2 Position = new Vector2();
@@ -115,11 +119,12 @@
         public void MoveForward()
         {
             //Debug.Log("draw" + lineCount);
-            var radian = defaultAngle * Mathf.Deg2Rad;
+            float radian = (defaultAngle + UnityEngine.Random.Range(-AngleDeviation * 0.5f, AngleDeviation * 0.5f)) * Mathf.Deg2Rad;
             // reversed for so that it grows from the bottom to top.
-            var x = Mathf.Cos(radian);
-            var y = Mathf.Sin(radian);
-            var pos = new Vector2(x * MoveDistance, y * MoveDistance);
+            float x = Mathf.Cos(radian);
+            float y = Mathf.Sin(radian);
+            float currentLength = Length * (1.0f + UnityEngine.Random.Range(0.0f, LengthDeviation));
+            Vector2 pos = new Vector2(x * currentLength, y * currentLength);
 
             LineRenderer line = CreateLine();
             //Debug.Log("line start " + Position);
