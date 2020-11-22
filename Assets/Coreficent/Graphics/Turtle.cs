@@ -18,7 +18,6 @@
         public float Length = 1.0f;
         public float LengthDeviation = 1.0f;
 
-
         private float _defaultAngle = 90.0f;
         private Vector2 _position = new Vector2();
         private int _index = 0;
@@ -40,7 +39,6 @@
                 _currentThickness = value;
             }
         }
-
         public void Reset()
         {
             foreach (LineRenderer i in _lines)
