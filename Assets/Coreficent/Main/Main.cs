@@ -39,7 +39,7 @@
             _turtle.Angle = Angle.value;
             _turtle.MoveDistance = Length.value;
             _turtle.Thickness = Thickness.value;
-            _turtle.Iteration = (int) Iteration.value;
+            _turtle.Iteration = (int)Iteration.value;
             _turtle.Sentence = _lindenmayerSystem.Expand(_turtle.Iteration);
 
             Camera camera = MainCamera.GetComponent<Camera>();
@@ -127,11 +127,11 @@
                     Thickness.value = 4.0f;
                     break;
                 case 8:
-                    Axiom.text = "X";
-                    RuleA.text = "X=F[+X]FXF[-X]F";
-                    RuleB.text = "F=FF";
-                    Iteration.value = 4;
-                    Angle.value = 45.0f;
+                    Axiom.text = "F";
+                    RuleA.text = "F=FF[+F][-F]";
+                    RuleB.text = "";
+                    Iteration.value = 6;
+                    Angle.value = 90.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
@@ -170,7 +170,7 @@
         {
             Camera camera = MainCamera.GetComponent<Camera>();
             // increase the animation batch for larger trees
-            for (var i = 0; i < _turtle.Iteration * 2; ++i)
+            for (var i = 0; i < _turtle.Iteration * Time.deltaTime * 50.0f; ++i)
             {
                 if (_turtle.HasNext())
                 {

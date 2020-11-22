@@ -143,7 +143,7 @@
             line.startWidth = _currentThickness * thicknessMultiplier;
             line.endWidth = _currentThickness * thicknessMultiplier;
             line.useWorldSpace = false;
-            line.numCapVertices = 50;
+            line.numCapVertices = 4;
 
             lines.Add(line);
 
