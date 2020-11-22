@@ -28,13 +28,13 @@
         }
         public void SlideLength(float length)
         {
-
+            
         }
         public void SlideThickness(float thickness)
         {
             if (Main.Root)
             {
-                Main.Root.SetThickness(thickness);
+                //Main.Root.SetThickness(thickness);
             }
         }
     }

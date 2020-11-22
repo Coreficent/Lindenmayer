@@ -17,7 +17,7 @@
         public InputField RuleA;
         public InputField RuleB;
         public InputField Angle;
-        public InputField Length;
+        public Slider Length;
         public Slider Thickness;
         public InputField Iteration;
         public Button Rerender;
@@ -37,8 +37,7 @@
 
             _turtle.Reset();
             _turtle.Angle = float.Parse(Angle.text);
-            _turtle.MoveDistance = float.Parse(Length.text);
-            //_turtle.Thickness = float.Parse(Thickness.text);
+            _turtle.MoveDistance = Length.value;
             _turtle.Thickness = Thickness.value;
             _turtle.Iteration = int.Parse(Iteration.text);
             _turtle.Sentence = _lindenmayerSystem.Expand(_turtle.Iteration);
@@ -46,10 +45,6 @@
             Camera camera = MainCamera.GetComponent<Camera>();
             camera.orthographicSize = 1.0f;
             camera.transform.position = new Vector3();
-        }
-        public void SetThickness(float thickness)
-        {
-            _turtle.Thickness = thickness;
         }
         public void SetPreset(int index)
         {
@@ -65,7 +60,7 @@
                     RuleB.text = "";
                     Iteration.text = "5";
                     Angle.text = "25.7";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
                 case 1:
@@ -74,7 +69,7 @@
                     RuleB.text = "";
                     Iteration.text = "5";
                     Angle.text = "20.0";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 2.0f;
                     break;
                 case 2:
@@ -83,7 +78,7 @@
                     RuleB.text = "";
                     Iteration.text = "4";
                     Angle.text = "22.5";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 1.0f;
                     break;
                 case 3:
@@ -92,7 +87,7 @@
                     RuleB.text = "F=FF";
                     Iteration.text = "7";
                     Angle.text = "20.0";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 8.0f;
                     break;
                 case 4:
@@ -101,7 +96,7 @@
                     RuleB.text = "F=FF";
                     Iteration.text = "7";
                     Angle.text = "25.7";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 8.0f;
                     break;
                 case 5:
@@ -110,7 +105,7 @@
                     RuleB.text = "F=FF";
                     Iteration.text = "5";
                     Angle.text = "22.5";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
                 case 6:
@@ -119,7 +114,7 @@
                     RuleB.text = "";
                     Iteration.text = "3";
                     Angle.text = "45.0";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
                 case 7:
@@ -128,7 +123,7 @@
                     RuleB.text = "";
                     Iteration.text = "3";
                     Angle.text = "45.0";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
                 case 8:
@@ -137,7 +132,7 @@
                     RuleB.text = "";
                     Iteration.text = "3";
                     Angle.text = "45.0";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
                 case 9:
@@ -146,7 +141,7 @@
                     RuleB.text = "";
                     Iteration.text = "3";
                     Angle.text = "45.0";
-                    Length.text = "1.0";
+                    Length.value = 1.0f;
                     Thickness.value = 4.0f;
                     break;
                 default:
