@@ -50,11 +50,8 @@
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
 
-        //TODO error handling
-
         public void Render()
         {
-
             UpdateSlider();
 
             _lindenmayerSystem.Reset();
@@ -89,6 +86,24 @@
             switch (index)
             {
                 case 0:
+                    Axiom.text = "X";
+                    RuleA.text = "X=[-FX][+FX]";
+                    RuleB.text = "F=FF";
+                    RuleC1.text = "X=[-FX]FX[+FX]";
+                    RuleC2.text = "X=FX[-FX][+FX]FX";
+                    Iteration.value = 4;
+                    Angle.value = 15.0f;
+                    Length.value = 1.0f;
+                    Thickness.value = 10.0f;
+                    AngleDeviation.value = 45.0f;
+                    LengthDeviation.value = 10.0f;
+                    _turtle.Trunk = TrunkGeneric;
+                    _turtle.Branch = BranchGeneric;
+                    _turtle.Leaf = Green;
+                    _turtle.LeafSprite = LeafGeneric;
+                    _turtle.FlowerSprite = Flower;
+                    break;
+                case 1:
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F]F";
                     RuleB.text = "";
@@ -106,7 +121,7 @@
                     _turtle.LeafSprite = LeafCactus;
                     _turtle.FlowerSprite = null;
                     break;
-                case 1:
+                case 2:
                     Axiom.text = "F";
                     RuleA.text = "F=F[+F]F[-F][F]";
                     RuleB.text = "";
@@ -124,7 +139,7 @@
                     _turtle.LeafSprite = null;
                     _turtle.FlowerSprite = null;
                     break;
-                case 2:
+                case 3:
                     Axiom.text = "F";
                     RuleA.text = "F=FF-[-F+F+F]+[+F-F-F]";
                     RuleB.text = "";
@@ -142,7 +157,7 @@
                     _turtle.LeafSprite = null;
                     _turtle.FlowerSprite = null;
                     break;
-                case 3:
+                case 4:
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X]F[-X]+X";
                     RuleB.text = "F=FF";
@@ -160,7 +175,7 @@
                     _turtle.LeafSprite = LeafPlum;
                     _turtle.FlowerSprite = null;
                     break;
-                case 4:
+                case 5:
                     Axiom.text = "X";
                     RuleA.text = "X=F[+X][-X]FX";
                     RuleB.text = "F=FF";
@@ -178,7 +193,7 @@
                     _turtle.LeafSprite = null;
                     _turtle.FlowerSprite = null;
                     break;
-                case 5:
+                case 6:
                     Axiom.text = "X";
                     RuleA.text = "X=F-[[X]+X]+F[+FX]-X";
                     RuleB.text = "F=FF";
@@ -196,7 +211,7 @@
                     _turtle.LeafSprite = LeafPlum;
                     _turtle.FlowerSprite = null;
                     break;
-                case 6:
+                case 7:
                     Axiom.text = "Z";
                     RuleA.text = "Z=ZFX[+Z][-Z]";
                     RuleB.text = "X=X[-FFF][+FFF]FX";
@@ -214,7 +229,7 @@
                     _turtle.LeafSprite = null;
                     _turtle.FlowerSprite = null;
                     break;
-                case 7:
+                case 8:
                     Axiom.text = "FX";
                     RuleA.text = "X=[-FX][+FX]";
                     RuleB.text = "";
@@ -232,7 +247,7 @@
                     _turtle.LeafSprite = LeafMushroom;
                     _turtle.FlowerSprite = null;
                     break;
-                case 8:
+                case 9:
                     Axiom.text = "F";
                     RuleA.text = "F=FF[+F][-F]";
                     RuleB.text = "";
@@ -250,7 +265,7 @@
                     _turtle.LeafSprite = LeafSilicon;
                     _turtle.FlowerSprite = null;
                     break;
-                case 9:
+                case 10:
                     Axiom.text = "X";
                     RuleA.text = "X=[+++FFFF-F-F-F[X]-F--F--F--F--F][---FFFF+F+F+F[X]+F++F++F++F++F]";
                     RuleB.text = "F=FF";
@@ -267,24 +282,6 @@
                     _turtle.Leaf = Red;
                     _turtle.LeafSprite = null;
                     _turtle.FlowerSprite = null;
-                    break;
-                case 10:
-                    Axiom.text = "X";
-                    RuleA.text = "X=[-FX][+FX]";
-                    RuleB.text = "F=FF";
-                    RuleC1.text = "X=[-FX]FX[+FX]";
-                    RuleC2.text = "X=FX[-FX][+FX]FX";
-                    Iteration.value = 4;
-                    Angle.value = 15.0f;
-                    Length.value = 1.0f;
-                    Thickness.value = 10.0f;
-                    AngleDeviation.value = 45.0f;
-                    LengthDeviation.value = 10.0f;
-                    _turtle.Trunk = TrunkGeneric;
-                    _turtle.Branch = BranchGeneric;
-                    _turtle.Leaf = Green;
-                    _turtle.LeafSprite = LeafGeneric;
-                    _turtle.FlowerSprite = Flower;
                     break;
                 default:
                     Debug.Log("unexpected preset");
