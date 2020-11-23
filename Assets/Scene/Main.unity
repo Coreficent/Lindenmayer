@@ -339,6 +339,8 @@ MonoBehaviour:
   Green: {fileID: 2100000, guid: 6d078695de507e142834894f678200d2, type: 2}
   Red: {fileID: 2100000, guid: adbaedaec1c6fe54085cdbe73dac4e7a, type: 2}
   Blue: {fileID: 2100000, guid: eac0091e935523545ab607f56ccd521c, type: 2}
+  TrunkGeneric: {fileID: 2100000, guid: fb1ed01163dcb0e4aac7561df2cc9c26, type: 2}
+  BranchGeneric: {fileID: 2100000, guid: c86d642750ff93249b250053eaa23ca8, type: 2}
   Axiom: {fileID: 1080171648}
   RuleA: {fileID: 822441140}
   RuleB: {fileID: 182563321}
@@ -5668,7 +5670,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: 9 Heart Bush
       m_Image: {fileID: 0}
-    - m_Text: Preset 10
+    - m_Text: 10 Stochastic Tree
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
