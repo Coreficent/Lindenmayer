@@ -337,6 +337,7 @@ MonoBehaviour:
   MainCamera: {fileID: 519420028}
   Invisible: {fileID: 2100000, guid: b6f0bd5eca5d0904eab914f6e04786d3, type: 2}
   Black: {fileID: 2100000, guid: 5f98769bbf5290d47962c039a0741442, type: 2}
+  White: {fileID: 2100000, guid: 09c40a3bd3d644649b3332c41a224ef4, type: 2}
   Green: {fileID: 2100000, guid: 6d078695de507e142834894f678200d2, type: 2}
   Red: {fileID: 2100000, guid: adbaedaec1c6fe54085cdbe73dac4e7a, type: 2}
   Blue: {fileID: 2100000, guid: eac0091e935523545ab607f56ccd521c, type: 2}
@@ -365,6 +366,8 @@ MonoBehaviour:
   LeafGeneric: {fileID: 3734098218988752412, guid: 70a4b00085f6ea246b5462f61a0a08ff,
     type: 3}
   LeafSilicon: {fileID: 5714588687531942100, guid: 90921ef082b660841bc73f2ca018d295,
+    type: 3}
+  LeafMushroom: {fileID: 253080276655499855, guid: 20027dadec6849844bd4d80ff32cd4fd,
     type: 3}
 --- !u!4 &144704633
 Transform:
