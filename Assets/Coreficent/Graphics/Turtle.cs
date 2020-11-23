@@ -5,38 +5,37 @@
     using UnityEngine;
     public class Turtle
     {
+        public enum RenderStyle { Simple, Complex };
+
+        public GameObject FlowerSprite;
+        public GameObject LeafSprite;
+        public Material Branch;
+        public Material Invisible;
+        public Material Leaf;
         public Material Simple;
         public Material Trunk;
-        public Material Branch;
-        public Material Leaf;
-        public Material Invisible;
-        public GameObject LeafSprite;
-        public GameObject FlowerSprite;
-
-        public string Sentence = "F[+F]F[-F]F";
-        public float MaxWidth = 0.0f;
-        public float MaxHeight = 0.0f;
-        public int Iteration = 0;
-
+        public RenderStyle Style = RenderStyle.Simple;
         public float Angle = 45.0f;
         public float AngleDeviation = 0.0f;
         public float Length = 1.0f;
         public float LengthDeviation = 1.0f;
+        public float MaxHeight = 0.0f;
+        public float MaxWidth = 0.0f;
+        public int Iteration = 0;
+        public string Sentence = "F[+F]F[-F]F";
 
-        public enum RenderStyle { Simple, Complex };
-        public RenderStyle Style = RenderStyle.Simple;
-
-        private float _defaultAngle = 90.0f;
         private Vector2 _position = new Vector2();
-        private int _index = 0;
-        private readonly Stack<Tuple<Vector2, float, float>> _stack = new Stack<Tuple<Vector2, float, float>>();
-        private readonly List<LineRenderer> _lines = new List<LineRenderer>();
-        private readonly List<GameObject> _leafSprites = new List<GameObject>();
-        private int _lineCount = 0;
-        private readonly float _thicknessMultiplier = 0.5f;
-        private float _thickness = 1.0f;
         private float _currentThickness = 1.0f;
+        private float _defaultAngle = 90.0f;
+        private float _thickness = 1.0f;
         private float _thicknessDiminisherAmount = 0.75f;
+        private int _index = 0;
+        private int _lineCount = 0;
+        private readonly List<GameObject> _leafSprites = new List<GameObject>();
+        private readonly List<LineRenderer> _lines = new List<LineRenderer>();
+        private readonly Stack<Tuple<Vector2, float, float>> _stack = new Stack<Tuple<Vector2, float, float>>();
+        private readonly float _thicknessMultiplier = 0.5f;
+
 
         public float Progress => (float)_index / Sentence.Length;
         public float Thickness
