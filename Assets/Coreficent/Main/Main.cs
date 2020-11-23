@@ -30,6 +30,9 @@
         public Toggle Animation;
         public Toggle Style;
         public Text AngleText;
+        public Text LengthText;
+        public Text ThicknessText;
+        public Text IterationText;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -64,6 +67,9 @@
         public void UpdateSlider()
         {
             AngleText.text = "Angle:" + Angle.value + ", " + "Deviation:" + AngleDeviation.value;
+            LengthText.text = "Length:" + Length.value + ", " + "Deviation:" + LengthDeviation.value;
+            ThicknessText.text = "Thickness:" + Thickness.value;
+            IterationText.text = "Order:" + Iteration.value;
         }
         public void SetPreset(int index)
         {
