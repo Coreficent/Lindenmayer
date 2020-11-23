@@ -354,6 +354,7 @@ MonoBehaviour:
   Progress: {fileID: 1220229352}
   Animation: {fileID: 1012486979}
   Style: {fileID: 342906256}
+  AngleText: {fileID: 811992028}
 --- !u!4 &144704633
 Transform:
   m_ObjectHideFlags: 0

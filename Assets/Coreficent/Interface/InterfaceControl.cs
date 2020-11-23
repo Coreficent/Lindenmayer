@@ -14,10 +14,16 @@
         }
         public void SelectPreset(int index)
         {
-            // Debug.Log("index::" + index);
             if (Main.Root)
             {
                 Main.Root.SetPreset(index);
+            }
+        }
+        public void Slide()
+        {
+            if (Main.Root)
+            {
+                Main.Root.UpdateSlider();
             }
         }
     }

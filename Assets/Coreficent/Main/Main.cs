@@ -29,6 +29,7 @@
         public Image Progress;
         public Toggle Animation;
         public Toggle Style;
+        public Text AngleText;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -37,6 +38,9 @@
 
         public void Render()
         {
+            Debug.Log("here");
+            UpdateSlider();
+
             _lindenmayerSystem.Reset();
             _lindenmayerSystem.Axiom = Axiom.text;
             _lindenmayerSystem.AddRule(RuleA.text);
@@ -57,6 +61,10 @@
             camera.orthographicSize = 1.0f;
             camera.transform.position = new Vector3();
         }
+        public void UpdateSlider()
+        {
+            AngleText.text = "Angle:" + Angle.value + ", " + "Deviation:" + AngleDeviation.value;
+        }
         public void SetPreset(int index)
         {
             //Debug.Log("preset index" + index);
@@ -73,9 +81,9 @@
                     RuleC2.text = "";
                     Iteration.value = 5;
                     Angle.value = 25.7f;
+                    AngleDeviation.value = 0.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
-                    AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
                     break;
                 case 1:
