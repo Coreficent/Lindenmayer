@@ -75,8 +75,6 @@
         {
             //Debug.Log("preset index" + index);
 
-            _lindenmayerSystem.Reset();
-
             switch (index)
             {
                 case 0:
@@ -208,6 +206,9 @@
                     Thickness.value = 25.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
+                    _turtle.Trunk = Red;
+                    _turtle.Branch = Red;
+                    _turtle.Leaf = Red;
                     break;
                 case 10:
                     Axiom.text = "X";
@@ -229,7 +230,6 @@
 
             Render();
         }
-
         protected void Start()
         {
             Debug.Log("Main Started");
@@ -239,13 +239,11 @@
             _turtle.Branch = Blue;
             _turtle.Leaf = Green;
 
-
             SetPreset(0);
             Render();
 
             Root = this;
         }
-
         private void Update()
         {
             if (_turtle.HasNext())
@@ -270,4 +268,3 @@
         }
     }
 }
-
