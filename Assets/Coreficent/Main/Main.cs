@@ -208,8 +208,8 @@
                     Thickness.value = 1.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
-                    _turtle.Trunk = TrunkGeneric;
-                    _turtle.Branch = BranchGeneric;
+                    _turtle.Trunk = BranchGeneric;
+                    _turtle.Branch = Yellow;
                     _turtle.Leaf = Yellow;
                     _turtle.LeafSprite = null;
                     _turtle.FlowerSprite = null;
