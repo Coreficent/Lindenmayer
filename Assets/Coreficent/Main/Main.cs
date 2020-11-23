@@ -10,10 +10,12 @@
         static public Main Root = null;
 
         public GameObject MainCamera;
+        public Material Invisible;
         public Material Black;
         public Material Green;
         public Material Red;
         public Material Blue;
+        public Material Silver;
         public Material TrunkGeneric;
         public Material BranchGeneric;
         public InputField Axiom;
@@ -36,6 +38,7 @@
         public Text ThicknessText;
         public Text IterationText;
         public GameObject LeafGeneric;
+        public GameObject LeafSilicon;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -188,12 +191,16 @@
                     RuleB.text = "";
                     RuleC1.text = "";
                     RuleC2.text = "";
-                    Iteration.value = 7;
+                    Iteration.value = 6;
                     Angle.value = 90.0f;
                     Length.value = 1.0f;
-                    Thickness.value = 4.0f;
+                    Thickness.value = 2.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
+                    _turtle.Trunk = Silver;
+                    _turtle.Branch = Silver;
+                    _turtle.Leaf = Silver;
+                    _turtle.LeafSprite = LeafSilicon;
                     break;
                 case 9:
                     Axiom.text = "X";
@@ -240,6 +247,7 @@
         {
             Debug.Log("Main Started");
 
+            _turtle.Invisible = Invisible;
             _turtle.Simple = Black;
             _turtle.Trunk = Red;
             _turtle.Branch = Blue;

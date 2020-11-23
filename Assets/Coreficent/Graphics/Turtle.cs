@@ -9,6 +9,7 @@
         public Material Trunk;
         public Material Branch;
         public Material Leaf;
+        public Material Invisible;
         public GameObject LeafSprite;
 
         public string Sentence = "F[+F]F[-F]F";
@@ -100,7 +101,7 @@
                                 GameObject leafSprite = UnityEngine.Object.Instantiate(LeafSprite);
                                 Vector3 final = leaf.GetPosition(1);
                                 Vector3 initial = leaf.GetPosition(0);
-                                leafSprite.transform.position = final;
+                                leafSprite.transform.position = initial - new Vector3(0.0f, 0.0f, 0.1f);
                                 _leafSprites.Add(leafSprite);
                                 float spriteAngle = Mathf.Atan2(final.y - initial.y, final.x - initial.x) * Mathf.Rad2Deg - _defaultAngle;
                                 Vector3 currentAngle = leafSprite.transform.eulerAngles;
@@ -109,6 +110,7 @@
                                 leafSprite.transform.localScale = leafSprite.transform.localScale * (1.0f + UnityEngine.Random.Range(0.0f, LengthDeviation)) * Thickness * 0.05f;
 
                                 // TODO use invisible material for leaf line
+                                leaf.material = Invisible;
                             }
                             else
                             {
