@@ -14,6 +14,8 @@
         public Material Green;
         public Material Red;
         public Material Blue;
+        public Material TrunkGeneric;
+        public Material BranchGeneric;
         public InputField Axiom;
         public InputField RuleA;
         public InputField RuleB;
@@ -33,6 +35,7 @@
         public Text LengthText;
         public Text ThicknessText;
         public Text IterationText;
+        public GameObject LeafGeneric;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -73,8 +76,6 @@
         }
         public void SetPreset(int index)
         {
-            //Debug.Log("preset index" + index);
-
             switch (index)
             {
                 case 0:
@@ -209,6 +210,7 @@
                     _turtle.Trunk = Red;
                     _turtle.Branch = Red;
                     _turtle.Leaf = Red;
+                    _turtle.LeafSprite = null;
                     break;
                 case 10:
                     Axiom.text = "X";
@@ -222,6 +224,10 @@
                     Thickness.value = 10.0f;
                     AngleDeviation.value = 45.0f;
                     LengthDeviation.value = 10.0f;
+                    _turtle.Trunk = TrunkGeneric;
+                    _turtle.Branch = BranchGeneric;
+                    _turtle.Leaf = Green;
+                    _turtle.LeafSprite = LeafGeneric;
                     break;
                 default:
                     Debug.Log("unexpected preset");

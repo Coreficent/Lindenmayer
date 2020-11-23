@@ -9,6 +9,8 @@
         public Material Trunk;
         public Material Branch;
         public Material Leaf;
+        public GameObject LeafSprite;
+
         public string Sentence = "F[+F]F[-F]F";
         public float MaxWidth = 0.0f;
         public float MaxHeight = 0.0f;
@@ -27,6 +29,7 @@
         private int _index = 0;
         private readonly Stack<Tuple<Vector2, float, float>> _stack = new Stack<Tuple<Vector2, float, float>>();
         private readonly List<LineRenderer> _lines = new List<LineRenderer>();
+        private readonly List<GameObject> _leafSprites = new List<GameObject>();
         private int _lineCount = 0;
         private readonly float _thicknessMultiplier = 0.5f;
         private float _thickness = 1.0f;
@@ -52,6 +55,11 @@
             _lines.Clear();
             _lineCount = 0;
             _stack.Clear();
+            foreach (GameObject i in _leafSprites)
+            {
+                UnityEngine.Object.Destroy(i);
+            }
+            _leafSprites.Clear();
             _position = new Vector2();
             _defaultAngle = 90.0f;
             _index = 0;
@@ -87,7 +95,25 @@
                         if (Style == RenderStyle.Complex)
                         {
                             LineRenderer leaf = _lines[_lines.Count - 1];
-                            leaf.material = Leaf;
+                            if (LeafSprite)
+                            {
+                                GameObject leafSprite = UnityEngine.Object.Instantiate(LeafSprite);
+                                Vector3 final = leaf.GetPosition(1);
+                                Vector3 initial = leaf.GetPosition(0);
+                                leafSprite.transform.position = final;
+                                _leafSprites.Add(leafSprite);
+                                float spriteAngle = Mathf.Atan2(final.y - initial.y, final.x - initial.x) * Mathf.Rad2Deg - _defaultAngle;
+                                Vector3 currentAngle = leafSprite.transform.eulerAngles;
+                                currentAngle.z = spriteAngle;
+                                leafSprite.transform.eulerAngles = currentAngle;
+                                leafSprite.transform.localScale = leafSprite.transform.localScale * (1.0f + UnityEngine.Random.Range(0.0f, LengthDeviation)) * Thickness * 0.05f;
+
+                                // TODO use invisible material for leaf line
+                            }
+                            else
+                            {
+                                leaf.material = Leaf;
+                            }
                         }
                         //leaf.SetPosition(0, leaf.GetPosition(0) - new Vector3(0.0f, 0.0f, 0.1f));
                         //leaf.SetPosition(1, leaf.GetPosition(1) - new Vector3(0.0f, 0.0f, 0.1f));

@@ -41,7 +41,6 @@
             for (var i = 0; i < iteration; ++i)
             {
                 itermediate = Expand(itermediate);
-                //Debug.Log("itermediate::" + itermediate);
             }
             Debug.Log("Sentence Size::" + itermediate.Length);
             return itermediate;
