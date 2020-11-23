@@ -371,6 +371,8 @@ MonoBehaviour:
     type: 3}
   LeafMushroom: {fileID: 253080276655499855, guid: 20027dadec6849844bd4d80ff32cd4fd,
     type: 3}
+  LeafCactus: {fileID: 348284323099138623, guid: 06f4f415ffa59fc409964ad13788bc37,
+    type: 3}
 --- !u!4 &144704633
 Transform:
   m_ObjectHideFlags: 0
@@ -5659,9 +5661,9 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Preset 0
+    - m_Text: 0 Cactus
       m_Image: {fileID: 0}
-    - m_Text: Preset 1
+    - m_Text: 1 Reseda
       m_Image: {fileID: 0}
     - m_Text: 2 Flame Tree
       m_Image: {fileID: 0}
@@ -6505,7 +6507,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Preset 0
+  m_Text: 0 Cactus
 --- !u!222 &1786867841
 CanvasRenderer:
   m_ObjectHideFlags: 0
