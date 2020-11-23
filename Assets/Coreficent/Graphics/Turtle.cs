@@ -11,6 +11,7 @@
         public Material Leaf;
         public Material Invisible;
         public GameObject LeafSprite;
+        public GameObject FlowerSprite;
 
         public string Sentence = "F[+F]F[-F]F";
         public float MaxWidth = 0.0f;
@@ -98,16 +99,26 @@
                             LineRenderer leaf = _lines[_lines.Count - 1];
                             if (LeafSprite)
                             {
-                                GameObject leafSprite = UnityEngine.Object.Instantiate(LeafSprite);
+
+                                GameObject sprite;
+                                if (FlowerSprite && UnityEngine.Random.Range(0.0f, 250.0f) < 1.0f)
+                                {
+                                    sprite = UnityEngine.Object.Instantiate(FlowerSprite);
+                                    sprite.transform.position += -new Vector3(0.0f, 0.0f, 0.1f);
+                                }
+                                else
+                                {
+                                    sprite = UnityEngine.Object.Instantiate(LeafSprite);
+                                }
                                 Vector3 final = leaf.GetPosition(1);
                                 Vector3 initial = leaf.GetPosition(0);
-                                leafSprite.transform.position = initial - new Vector3(0.0f, 0.0f, 0.1f);
-                                _leafSprites.Add(leafSprite);
+                                sprite.transform.position += initial - new Vector3(0.0f, 0.0f, 0.1f);
+                                _leafSprites.Add(sprite);
                                 float spriteAngle = Mathf.Atan2(final.y - initial.y, final.x - initial.x) * Mathf.Rad2Deg - _defaultAngle;
-                                Vector3 currentAngle = leafSprite.transform.eulerAngles;
+                                Vector3 currentAngle = sprite.transform.eulerAngles;
                                 currentAngle.z = spriteAngle;
-                                leafSprite.transform.eulerAngles = currentAngle;
-                                leafSprite.transform.localScale = leafSprite.transform.localScale * (1.0f + UnityEngine.Random.Range(0.0f, LengthDeviation)) * Thickness * 0.05f;
+                                sprite.transform.eulerAngles = currentAngle;
+                                sprite.transform.localScale = sprite.transform.localScale * (1.0f + UnityEngine.Random.Range(0.0f, LengthDeviation)) * Thickness * 0.05f;
 
                                 // TODO use invisible material for leaf line
                                 leaf.material = Invisible;

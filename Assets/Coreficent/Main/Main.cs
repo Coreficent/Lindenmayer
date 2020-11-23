@@ -45,6 +45,7 @@
         public GameObject LeafMushroom;
         public GameObject LeafCactus;
         public GameObject LeafPlum;
+        public GameObject Flower;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -103,6 +104,7 @@
                     _turtle.Branch = Green;
                     _turtle.Leaf = Yellow;
                     _turtle.LeafSprite = LeafCactus;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 1:
                     Axiom.text = "F";
@@ -120,6 +122,7 @@
                     _turtle.Branch = Green;
                     _turtle.Leaf = Yellow;
                     _turtle.LeafSprite = null;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 2:
                     Axiom.text = "F";
@@ -137,6 +140,7 @@
                     _turtle.Branch = Yellow;
                     _turtle.Leaf = Red;
                     _turtle.LeafSprite = null;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 3:
                     Axiom.text = "X";
@@ -154,6 +158,7 @@
                     _turtle.Branch = BranchGeneric;
                     _turtle.Leaf = Red;
                     _turtle.LeafSprite = LeafPlum;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 4:
                     Axiom.text = "X";
@@ -171,6 +176,7 @@
                     _turtle.Branch = Silver;
                     _turtle.Leaf = White;
                     _turtle.LeafSprite = null;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 5:
                     Axiom.text = "X";
@@ -184,10 +190,11 @@
                     Thickness.value = 4.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
-                    _turtle.Trunk = Yellow;
-                    _turtle.Branch = Green;
+                    _turtle.Trunk = Green;
+                    _turtle.Branch = Yellow;
                     _turtle.Leaf = Red;
                     _turtle.LeafSprite = LeafPlum;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 6:
                     Axiom.text = "Z";
@@ -205,6 +212,7 @@
                     _turtle.Branch = BranchGeneric;
                     _turtle.Leaf = Yellow;
                     _turtle.LeafSprite = null;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 7:
                     Axiom.text = "FX";
@@ -222,6 +230,7 @@
                     _turtle.Branch = Silver;
                     _turtle.Leaf = Silver;
                     _turtle.LeafSprite = LeafMushroom;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 8:
                     Axiom.text = "F";
@@ -236,9 +245,10 @@
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
                     _turtle.Trunk = Silver;
-                    _turtle.Branch = Silver;
+                    _turtle.Branch = White;
                     _turtle.Leaf = Silver;
                     _turtle.LeafSprite = LeafSilicon;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 9:
                     Axiom.text = "X";
@@ -256,6 +266,7 @@
                     _turtle.Branch = Red;
                     _turtle.Leaf = Red;
                     _turtle.LeafSprite = null;
+                    _turtle.FlowerSprite = null;
                     break;
                 case 10:
                     Axiom.text = "X";
@@ -273,6 +284,7 @@
                     _turtle.Branch = BranchGeneric;
                     _turtle.Leaf = Green;
                     _turtle.LeafSprite = LeafGeneric;
+                    _turtle.FlowerSprite = Flower;
                     break;
                 default:
                     Debug.Log("unexpected preset");
