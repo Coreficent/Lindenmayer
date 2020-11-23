@@ -119,7 +119,6 @@
                                 sprite.transform.eulerAngles = currentAngle;
                                 sprite.transform.localScale = sprite.transform.localScale * (1.0f + UnityEngine.Random.Range(0.0f, LengthDeviation)) * Thickness * 0.05f;
 
-                                // TODO use invisible material for leaf line
                                 leaf.material = Invisible;
                             }
                             else
@@ -127,8 +126,6 @@
                                 leaf.material = Leaf;
                             }
                         }
-                        //leaf.SetPosition(0, leaf.GetPosition(0) - new Vector3(0.0f, 0.0f, 0.1f));
-                        //leaf.SetPosition(1, leaf.GetPosition(1) - new Vector3(0.0f, 0.0f, 0.1f));
                         break;
                     case '+':
                         _defaultAngle += Angle;
@@ -155,21 +152,15 @@
         }
         public void MoveForward()
         {
-            //Debug.Log("draw" + lineCount);
             float radian = (_defaultAngle + UnityEngine.Random.Range(-AngleDeviation * 0.5f, AngleDeviation * 0.5f)) * Mathf.Deg2Rad;
-            // reversed for so that it grows from the bottom to top.
-            float x = Mathf.Cos(radian);
-            float y = Mathf.Sin(radian);
             float currentLength = Length * (1.0f + UnityEngine.Random.Range(0.0f, LengthDeviation));
-            Vector2 pos = new Vector2(x * currentLength, y * currentLength);
+            Vector2 pos = new Vector2(Mathf.Cos(radian) * currentLength, Mathf.Sin(radian) * currentLength);
 
             LineRenderer line = CreateLine();
-            //Debug.Log("line start " + Position);
             line.SetPosition(0, _position);
 
             _position += pos;
 
-            //Debug.Log("line end " + Position);
             line.SetPosition(1, _position);
 
             MaxWidth = Mathf.Max(MaxWidth, Mathf.Abs(_position.x));

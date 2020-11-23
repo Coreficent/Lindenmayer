@@ -316,14 +316,15 @@
                 // increase the animation batch for larger trees
                 for (var i = 0; i < (Animation.isOn ? _turtle.Iteration * Time.deltaTime * 50.0f : _turtle.Sentence.Length); ++i)
                 {
+                    float border = 1.25f;
                     _turtle.Next();
                     if (_turtle.MaxHeight > camera.orthographicSize)
                     {
-                        camera.orthographicSize = Mathf.Max(_turtle.MaxHeight * 0.5f, camera.orthographicSize);
+                        camera.orthographicSize = Mathf.Max(_turtle.MaxHeight * 0.5f * border, camera.orthographicSize);
                     }
                     if (_turtle.MaxWidth > camera.orthographicSize)
                     {
-                        camera.orthographicSize = Mathf.Max(_turtle.MaxWidth, camera.orthographicSize);
+                        camera.orthographicSize = Mathf.Max(_turtle.MaxWidth * border, camera.orthographicSize);
                     }
                     camera.transform.position = new Vector3(0.0f, camera.orthographicSize, -10);
                 }
