@@ -44,6 +44,7 @@
         public GameObject LeafSilicon;
         public GameObject LeafMushroom;
         public GameObject LeafCactus;
+        public GameObject LeafPlum;
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
@@ -149,6 +150,10 @@
                     Thickness.value = 8.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
+                    _turtle.Trunk = TrunkGeneric;
+                    _turtle.Branch = BranchGeneric;
+                    _turtle.Leaf = Red;
+                    _turtle.LeafSprite = LeafPlum;
                     break;
                 case 4:
                     Axiom.text = "X";
@@ -179,6 +184,10 @@
                     Thickness.value = 4.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
+                    _turtle.Trunk = Yellow;
+                    _turtle.Branch = Green;
+                    _turtle.Leaf = Red;
+                    _turtle.LeafSprite = LeafPlum;
                     break;
                 case 6:
                     Axiom.text = "Z";
