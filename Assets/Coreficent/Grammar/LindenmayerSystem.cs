@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
     using UnityEngine;
+
     public class LindenmayerSystem
     {
         public string Axiom;
@@ -23,16 +24,22 @@
         {
             if (rule != "")
             {
-                rules.Add(new Tuple<string, string>(rule.Substring(0, rule.IndexOf("=") - rule.IndexOf("Rule:") - 1), rule.Substring(rule.IndexOf("=") + 1)));
+                if (rule.IndexOf("=") != -1)
+                {
+                    rules.Add(new Tuple<string, string>(rule.Substring(0, rule.IndexOf("=")), rule.Substring(rule.IndexOf("=") + 1)));
+                }
             }
         }
         public void AddChanceRule(string ruleA, string ruleB)
         {
             if (ruleA != "" && ruleB != "")
             {
-                Tuple<string, string> chanceRuleA = new Tuple<string, string>(ruleA.Substring(0, ruleA.IndexOf("=") - ruleA.IndexOf("Rule:") - 1), ruleA.Substring(ruleA.IndexOf("=") + 1));
-                Tuple<string, string> chanceRuleB = new Tuple<string, string>(ruleB.Substring(0, ruleB.IndexOf("=") - ruleB.IndexOf("Rule:") - 1), ruleB.Substring(ruleB.IndexOf("=") + 1));
-                chanceRules.Add(new Tuple<Tuple<string, string>, Tuple<string, string>>(chanceRuleA, chanceRuleB));
+                if (ruleA.IndexOf("=") != -1 && ruleB.IndexOf("=") != -1)
+                {
+                    Tuple<string, string> chanceRuleA = new Tuple<string, string>(ruleA.Substring(0, ruleA.IndexOf("=")), ruleA.Substring(ruleA.IndexOf("=") + 1));
+                    Tuple<string, string> chanceRuleB = new Tuple<string, string>(ruleB.Substring(0, ruleB.IndexOf("=")), ruleB.Substring(ruleB.IndexOf("=") + 1));
+                    chanceRules.Add(new Tuple<Tuple<string, string>, Tuple<string, string>>(chanceRuleA, chanceRuleB));
+                }
             }
         }
         public string Expand(int iteration)
@@ -42,7 +49,6 @@
             {
                 itermediate = Expand(itermediate);
             }
-            Debug.Log("Sentence Size::" + itermediate.Length);
             return itermediate;
         }
 

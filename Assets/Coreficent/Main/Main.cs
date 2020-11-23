@@ -54,7 +54,7 @@
 
         public void Render()
         {
-            Debug.Log("here");
+
             UpdateSlider();
 
             _lindenmayerSystem.Reset();
@@ -295,8 +295,6 @@
         }
         protected void Start()
         {
-            Debug.Log("Main Started");
-
             _turtle.Invisible = Invisible;
             _turtle.Simple = Black;
             _turtle.Trunk = Red;
