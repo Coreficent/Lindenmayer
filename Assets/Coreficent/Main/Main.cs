@@ -16,7 +16,9 @@
         public Material Green;
         public Material Red;
         public Material Blue;
+        public Material Yellow;
         public Material Silver;
+        public Material Aqua;
         public Material TrunkGeneric;
         public Material BranchGeneric;
         public InputField Axiom;
@@ -121,6 +123,10 @@
                     Thickness.value = 1.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
+                    _turtle.Trunk = TrunkGeneric;
+                    _turtle.Branch = Yellow;
+                    _turtle.Leaf = Red;
+                    _turtle.LeafSprite = null;
                     break;
                 case 3:
                     Axiom.text = "X";
@@ -147,6 +153,10 @@
                     Thickness.value = 8.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
+                    _turtle.Trunk = Aqua;
+                    _turtle.Branch = Silver;
+                    _turtle.Leaf = White;
+                    _turtle.LeafSprite = null;
                     break;
                 case 5:
                     Axiom.text = "X";
@@ -173,6 +183,10 @@
                     Thickness.value = 1.0f;
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
+                    _turtle.Trunk = TrunkGeneric;
+                    _turtle.Branch = BranchGeneric;
+                    _turtle.Leaf = Yellow;
+                    _turtle.LeafSprite = null;
                     break;
                 case 7:
                     Axiom.text = "FX";
@@ -180,7 +194,7 @@
                     RuleB.text = "";
                     RuleC1.text = "";
                     RuleC2.text = "";
-                    Iteration.value = 7;
+                    Iteration.value = 5;
                     Angle.value = 20.0f;
                     Length.value = 1.0f;
                     Thickness.value = 4.0f;
