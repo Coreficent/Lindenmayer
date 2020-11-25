@@ -5,7 +5,9 @@
     using System;
     using UnityEngine;
     using UnityEngine.UI;
-
+    /*
+     * the main entry of the program.
+     */
     public class Main : MonoBehaviour
     {
         static public Main Root = null;
@@ -51,7 +53,9 @@
 
         private readonly LindenmayerSystem _lindenmayerSystem = new LindenmayerSystem();
         private readonly Turtle _turtle = new Turtle();
-
+        /*
+         * try reading from the parameters and render the graphics or outputting an error if unable to render.
+         */
         public void Render()
         {
             MessageText.text = "";
@@ -85,6 +89,9 @@
                 MessageText.text = "Could not render due to: " + exception.GetType().Name;
             }
         }
+        /*
+         * update the display values when sliding.
+         */
         public void UpdateSlider()
         {
             AngleText.text = "Angle:" + Angle.value + ", " + "Deviation:" + AngleDeviation.value;
@@ -92,6 +99,9 @@
             ThicknessText.text = "Thickness:" + Thickness.value;
             IterationText.text = "Order:" + Iteration.value;
         }
+        /*
+         * update to pre-configured presets when the dropdown menu is updated.
+         */
         public void SetPreset(int index)
         {
             switch (index)
@@ -301,6 +311,9 @@
 
             Render();
         }
+        /*
+         * initialize member variables and the main singleton.
+         */
         protected void Start()
         {
             _turtle.Invisible = Invisible;
@@ -314,15 +327,19 @@
 
             Root = this;
         }
+        /*
+         * animate the current l system or instantly render it on screen.
+         */
         private void Update()
         {
             if (_turtle.HasNext())
             {
-                // increase the animation batch for larger trees
+                // increase the animation batch for larger trees.
                 for (var i = 0; i < (Animation.isOn ? _turtle.Iteration * Time.deltaTime * 50.0f : _turtle.Sentence.Length); ++i)
                 {
                     _turtle.Next();
                 }
+                // adjust the camera to fit the graphics on screen.
                 float border = 1.25f;
                 Camera camera = MainCamera.GetComponent<Camera>();
                 if (_turtle.MaxHeight > camera.orthographicSize)

@@ -3,6 +3,9 @@
     using System;
     using System.Collections.Generic;
     using UnityEngine;
+    /*
+     * the core class for drawing the graphics.
+     */
     public class Turtle
     {
         public enum RenderStyle { Simple, Complex };
@@ -36,7 +39,9 @@
         private readonly Stack<Tuple<Vector2, float, float>> _stack = new Stack<Tuple<Vector2, float, float>>();
         private readonly float _thicknessMultiplier = 0.5f;
 
-
+        /*
+         * return the current progress when animating the graphics.
+         */
         public float Progress => (float)_index / Sentence.Length;
         public float Thickness
         {
@@ -47,6 +52,9 @@
                 _currentThickness = value;
             }
         }
+        /*
+         * reset to the initial state when changing a configuration.
+         */
         public void Reset()
         {
             foreach (LineRenderer i in _lines)
@@ -68,10 +76,16 @@
             MaxHeight = 0.0f;
             Style = RenderStyle.Simple;
         }
+        /*
+         * determine if there is more to be drawn if the animated option is enabled.
+         */
         public bool HasNext()
         {
             return _index < Sentence.Length;
         }
+        /*
+         * draw the next avaiable segment of the graphics.
+         */
         public void Next()
         {
             bool drawn = false;
@@ -98,7 +112,7 @@
                             LineRenderer leaf = _lines[_lines.Count - 1];
                             if (LeafSprite)
                             {
-
+                                // render custom leaves if available.
                                 GameObject sprite;
                                 if (FlowerSprite && UnityEngine.Random.Range(0.0f, 250.0f) < 1.0f)
                                 {
@@ -150,6 +164,9 @@
                 }
             }
         }
+        /*
+         * move the turtle forward and draw a line.
+         */
         public void MoveForward()
         {
             float radian = (_defaultAngle + UnityEngine.Random.Range(-AngleDeviation * 0.5f, AngleDeviation * 0.5f)) * Mathf.Deg2Rad;
@@ -168,6 +185,9 @@
 
             _lineCount++;
         }
+        /*
+         * return a new line renderer to be rendered on screen.
+         */
         private LineRenderer CreateLine()
         {
             LineRenderer line = new GameObject("Segment::" + _lineCount).AddComponent<LineRenderer>();

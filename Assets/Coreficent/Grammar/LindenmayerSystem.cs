@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using UnityEngine;
 
     public class LindenmayerSystem
     {
@@ -11,15 +10,24 @@
         private readonly List<Tuple<string, string>> rules = new List<Tuple<string, string>>();
         private readonly List<Tuple<Tuple<string, string>, Tuple<string, string>>> chanceRules = new List<Tuple<Tuple<string, string>, Tuple<string, string>>>();
 
+        /*
+         * constructor.
+         */
         public LindenmayerSystem()
         {
 
         }
+        /*
+         * reset to the initial state when selecting a preset.
+         */
         public void Reset()
         {
             rules.Clear();
             chanceRules.Clear();
         }
+        /*
+         * add a rule to the l system.
+         */
         public void AddRule(string rule)
         {
             if (rule != "")
@@ -30,6 +38,9 @@
                 }
             }
         }
+        /*
+         * add a pair of chance rules for stochastic graphics.
+         */
         public void AddChanceRule(string ruleA, string ruleB)
         {
             if (ruleA != "" && ruleB != "")
@@ -42,6 +53,9 @@
                 }
             }
         }
+        /*
+         * expand the sentence given the number of iterations.
+         */
         public string Expand(int iteration)
         {
             string itermediate = Axiom;
@@ -51,7 +65,9 @@
             }
             return itermediate;
         }
-
+        /*
+         * determine how the rules should be applied.
+         */
         private string Expand(string sentence)
         {
             string result = sentence;
@@ -72,6 +88,9 @@
             }
             return result;
         }
+        /*
+         * apply the rules to the current sentence.
+         */
         private string Expand(string sentence, Tuple<string, string> rule)
         {
             StringBuilder result = new StringBuilder();
