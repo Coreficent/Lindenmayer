@@ -145,8 +145,8 @@
                     AngleDeviation.value = 0.0f;
                     LengthDeviation.value = 0.0f;
                     _turtle.Trunk = Green;
-                    _turtle.Branch = Green;
-                    _turtle.Leaf = Yellow;
+                    _turtle.Branch = Yellow;
+                    _turtle.Leaf = Green;
                     _turtle.LeafSprite = null;
                     _turtle.FlowerSprite = null;
                     break;
