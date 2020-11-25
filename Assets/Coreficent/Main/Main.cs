@@ -2,6 +2,7 @@
 {
     using Coreficent.Grammar;
     using Coreficent.Graphics;
+    using System;
     using UnityEngine;
     using UnityEngine.UI;
 
@@ -43,6 +44,7 @@
         public Text AngleText;
         public Text IterationText;
         public Text LengthText;
+        public Text MessageText;
         public Text ThicknessText;
         public Toggle Animation;
         public Toggle Style;
@@ -52,27 +54,36 @@
 
         public void Render()
         {
-            UpdateSlider();
+            MessageText.text = "";
 
-            _lindenmayerSystem.Reset();
-            _lindenmayerSystem.Axiom = Axiom.text;
-            _lindenmayerSystem.AddRule(RuleA.text);
-            _lindenmayerSystem.AddRule(RuleB.text);
-            _lindenmayerSystem.AddChanceRule(RuleC1.text, RuleC2.text);
+            try
+            {
+                UpdateSlider();
 
-            _turtle.Reset();
-            _turtle.Angle = Angle.value;
-            _turtle.AngleDeviation = AngleDeviation.value;
-            _turtle.Length = Length.value;
-            _turtle.LengthDeviation = LengthDeviation.value;
-            _turtle.Thickness = Thickness.value;
-            _turtle.Iteration = (int)Iteration.value;
-            _turtle.Sentence = _lindenmayerSystem.Expand(_turtle.Iteration);
-            _turtle.Style = Style.isOn ? Turtle.RenderStyle.Complex : Turtle.RenderStyle.Simple;
+                _lindenmayerSystem.Reset();
+                _lindenmayerSystem.Axiom = Axiom.text;
+                _lindenmayerSystem.AddRule(RuleA.text);
+                _lindenmayerSystem.AddRule(RuleB.text);
+                _lindenmayerSystem.AddChanceRule(RuleC1.text, RuleC2.text);
 
-            Camera camera = MainCamera.GetComponent<Camera>();
-            camera.orthographicSize = 1.0f;
-            camera.transform.position = new Vector3();
+                _turtle.Reset();
+                _turtle.Angle = Angle.value;
+                _turtle.AngleDeviation = AngleDeviation.value;
+                _turtle.Length = Length.value;
+                _turtle.LengthDeviation = LengthDeviation.value;
+                _turtle.Thickness = Thickness.value;
+                _turtle.Iteration = (int)Iteration.value;
+                _turtle.Sentence = _lindenmayerSystem.Expand(_turtle.Iteration);
+                _turtle.Style = Style.isOn ? Turtle.RenderStyle.Complex : Turtle.RenderStyle.Simple;
+
+                Camera camera = MainCamera.GetComponent<Camera>();
+                camera.orthographicSize = 1.0f;
+                camera.transform.position = new Vector3();
+            }
+            catch (Exception exception)
+            {
+                MessageText.text = "Could not render due to: " + exception.GetType().Name;
+            }
         }
         public void UpdateSlider()
         {
